@@ -1,0 +1,31 @@
+prefix: "§x§F§B§0§8§0§8E§x§F§1§0§D§0§Dv§x§E§6§1§1§1§1e§x§D§C§1§6§1§6n§x§D§2§1§B§1§Bt§x§C§8§2§0§2§0H§x§B§D§2§4§2§4e§x§B§3§2§9§2§9l§x§A§9§2§E§2§Ep§x§9§E§3§2§3§2e§x§9§4§3§7§3§7r §f•"
+messages:
+  # Error zprávy
+  onlyPlayer: "%prefix% §cTento příkaz může použít jen hráč. §c✘"
+  warpExists: "%prefix% §7Warp s názvem '§c%warp%§7' už existuje. §c✘"
+  warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje. §c✘"
+  warpDeleteFail: "%prefix% §7Nepodařilo se odstranit warp '§c%warp%§7'. §c✘"
+  playerNotOnline: "%prefix% §7Hráč '§c%warp%§7' není online. §c✘"
+
+  # Usage zprávy
+  usageCreate: "%prefix% §cPoužití: /createwarp <název>"
+  usageRemove: "%prefix% §cPoužití: /removewarp <název>"
+  usageWarp: "%prefix% §cPoužití: /warp <název>"
+  usageTpHere: "%prefix% §cPoužití: /tphere <hráč>"
+
+  # /warp zprávy
+  warpCreated: "%prefix% §7Warp '§c%warp%§7' byl vytvořen! §a✔"
+  warpDeleted: "%prefix% §7Warp '§c%warp%§7' byl úspěšně odstraněn. §a✔"
+  teleportSuccess: "%prefix% §7Byl jsi teleportován na warp '§c%warp%§7'."
+  gamemodeSet: "%prefix% §7Váš gamemode byl nastaven na '§c%warp%§7'."
+
+  # Informačí zprávy
+  configReloaded: "%prefix% §7Konfigurační soubor byl znovu načten. §a✔"
+  unknownSubcommand: "%prefix% §7Neznámý subpříkaz. Použij §c/eventhelper help"
+  versionMessage: "%prefix% §7Běžíš na verzi §cv%version%"
+
+  # Help
+  helpHeader: "§8§m------§r §4EventHelper Help §8§m------"
+  helpReload: "§c/eventhelper reload §7- Znovu načte konfiguraci"
+  helpVersion: "§c/eventhelper version §7- Zobrazí verzi pluginu"
+  helpHelp: "§c/eventhelper help §7- Zobrazí tuto nápovědu"

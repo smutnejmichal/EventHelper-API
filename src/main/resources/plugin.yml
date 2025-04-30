@@ -1,0 +1,5 @@
+name: EventHelper-
+version: '1.0'
+main: com.michalovec.eventhelper.Main
+api-version: '1.21'
+authors: [ Michalovec ]
