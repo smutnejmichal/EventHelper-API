@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.managers;
+package com.michalovec.eventhelper.Managers;
 
 import com.michalovec.eventhelper.Main;
 import org.bukkit.configuration.file.YamlConfiguration;

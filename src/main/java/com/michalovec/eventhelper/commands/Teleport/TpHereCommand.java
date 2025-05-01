@@ -1,6 +1,6 @@
-package com.michalovec.eventhelper.commands.teleport;
+package com.michalovec.eventhelper.commands.Teleport;
 
-import com.michalovec.eventhelper.managers.MessageManager;
+import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

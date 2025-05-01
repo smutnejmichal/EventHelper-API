@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.commands.Warp;
 
-import com.michalovec.eventhelper.managers.MessageManager;
-import com.michalovec.eventhelper.managers.WarpManager;
+import com.michalovec.eventhelper.Managers.MessageManager;
+import com.michalovec.eventhelper.Managers.WarpManager;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

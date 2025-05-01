@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands.rank;
+package com.michalovec.eventhelper.commands.Rank;
 
 import com.michalovec.eventhelper.Main;
 import org.bukkit.Bukkit;
