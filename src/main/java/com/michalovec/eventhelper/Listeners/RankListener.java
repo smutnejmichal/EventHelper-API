@@ -32,7 +32,7 @@ public class RankListener implements Listener {
 
         if (!main.getRankManager().getConfig().contains(player.getUniqueId().toString())){
             YamlConfiguration config = main.getRankManager().getConfig();
-            config.set(player.getUniqueId().toString(), Rank.GUEST.name());
+            config.set(player.getUniqueId().toString(), Rank.HRAC.name());
             try {
                 config.save(main.getRankManager().getFile());
             } catch (IOException x) {
