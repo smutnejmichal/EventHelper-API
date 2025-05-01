@@ -12,7 +12,6 @@ import com.michalovec.eventhelper.commands.Rank.RankCommand;
 import com.michalovec.eventhelper.commands.Rank.UpdateCommand;
 import com.michalovec.eventhelper.commands.Teleport.TpAllCommand;
 import com.michalovec.eventhelper.commands.Teleport.TpHereCommand;
-import com.michalovec.eventhelper.Listeners.ChatListener;
 import com.michalovec.eventhelper.Listeners.JoinQuitListener;
 import com.michalovec.eventhelper.Listeners.RankListener;
 import com.michalovec.eventhelper.Managers.Rank.NameTagManager;
@@ -75,7 +74,6 @@ public final class Main extends JavaPlugin {
         // LISTENERS
 
         Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
-        Bukkit.getPluginManager().registerEvents(new ChatListener(), this);
 
         // RANK
         Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
