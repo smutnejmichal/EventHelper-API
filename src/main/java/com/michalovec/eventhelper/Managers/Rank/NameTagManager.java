@@ -12,7 +12,6 @@ import java.util.Objects;
 public class NameTagManager {
 
     private Main main;
-    private Player player;
     public NameTagManager(Main main){
         this.main = main;
     }
