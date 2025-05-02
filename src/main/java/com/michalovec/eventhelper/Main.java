@@ -1,5 +1,6 @@
 package com.michalovec.eventhelper;
 
+import com.michalovec.eventhelper.TabCompletetion.RankTabCompleter;
 import com.michalovec.eventhelper.commands.*;
 import com.michalovec.eventhelper.commands.GameMode.GmAdventureCommand;
 import com.michalovec.eventhelper.commands.GameMode.GmCreativeCommand;
@@ -39,8 +40,6 @@ public final class Main extends JavaPlugin {
         nameTagManager = new NameTagManager(this);
         rankManager = new RankManager(this);
 
-
-
         // COMMANDS
         // WARP
         getCommand("createwarp").setExecutor(new CreateWarpCommand());
@@ -51,6 +50,7 @@ public final class Main extends JavaPlugin {
 
         // RANK
         getCommand("rank").setExecutor(new RankCommand(this));
+        getCommand("rank").setTabCompleter(new RankTabCompleter());
         getCommand("updateranks").setExecutor(new UpdateCommand(this));
 
         // EVENTHELPER
