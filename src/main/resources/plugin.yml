@@ -1,5 +1,40 @@
-name: EventHelper-
+name: EventHelper
 version: '1.0'
 main: com.michalovec.eventhelper.Main
 api-version: '1.21'
 authors: [ Michalovec ]
+commands:
+  gma:
+    permission: eventhelper.op
+  gmc:
+    permission: eventhelper.op
+  gmsp:
+    permission: eventhelper.op
+  gms:
+    permission: eventhelper.op
+  tpall:
+    permission: eventhelper.op
+  tphere:
+    aliases: [ s ]
+    permission: eventhelper.op
+  eventhelper:
+    permission: eventhelper.op
+  rank:
+    permission: eventhelper.op
+  updateranks:
+    permission: eventhelper.op
+  createwarp:
+    permission: eventhelper.op
+  removewarp:
+    permission: eventhelper.op
+  warp:
+    permission: eventhelper.op
+  list:
+    permission: eventhelper.op
+
+
+
+permissions:
+  eventhelper.op:
+    description: Pouze pro OP
+    default: op
