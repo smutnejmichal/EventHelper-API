@@ -2,6 +2,7 @@ package com.michalovec.eventhelper.commands.Rank;
 
 import com.michalovec.eventhelper.Enum.Rank;
 import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -31,35 +32,30 @@ public class RankCommand implements CommandExecutor {
                         Player target = Bukkit.getPlayer(args[0]);
 
                         for (Rank rank : Rank.values()){
-                            if (rank.name().equalsIgnoreCase(args[1])){ //equalsignorecase znamená že je jedno jak to je napsaný např. Admin, aDmin atd.
+                            if (rank.name().equalsIgnoreCase(args[1])) {
                                 main.getRankManager().setRank(target.getUniqueId(),rank,false);
 
-                                player.sendMessage(ChatColor.GREEN + "Změnil jsi " + target.getName() + " rank na " + rank.getDisplay() + ChatColor.GREEN + ".");
+                                player.sendMessage(MessageManager.getRankMessage("messages.rankChanged", target, rank.getDisplay()));
                                 if (target.isOnline()){
-                                    target.getPlayer().sendMessage(ChatColor.GREEN + player.getName() + " nastavil tvůj rank na " + rank.getDisplay() + ChatColor.GREEN + ".");
+                                    player.sendMessage(MessageManager.getRankMessage("messages.rankSomeoneChanged", player, rank.getDisplay()));
                                 }
                                 return false;
                             }
                         }
-                        player.sendMessage(ChatColor.GOLD + "EVENT" + ChatColor.WHITE + " | " + ChatColor.RED + "Špatný rank! Použitelné ranky: Guest (nezařazeno) nebo Admin");
+                        player.sendMessage(MessageManager.get("messages.unknownRank"));
 
                     } else {
-                        player.sendMessage(ChatColor.RED + "Tento uživatel nikdy nenapojil tento server!");
+                        player.sendMessage(MessageManager.getWithWarp("messages.playerNotOnline", args[0]));
                     }
-                }else {
-                    player.sendMessage(ChatColor.RED + "Špatné použití! Prosím použij /rank <player> <rank>");
+                } else {
+                    player.sendMessage(MessageManager.get("messages.rankWrongUsage"));
                 }
-            }else {
-                player.sendMessage(ChatColor.RED + "Musíš mít OP pro tento command!");
+            } else {
+                player.sendMessage(MessageManager.get("messages.playerIsNotOP"));
             }
 
 
         }
-
-
-
-
-
         return false;
     }
 }

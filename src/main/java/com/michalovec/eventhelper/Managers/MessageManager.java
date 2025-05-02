@@ -2,6 +2,7 @@ package com.michalovec.eventhelper.Managers;
 
 import com.michalovec.eventhelper.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 
@@ -31,6 +32,10 @@ public class MessageManager {
 
     public static String getWithWarp(String path, String warpName) {
         return get(path).replace("%warp%", warpName);
+    }
+
+    public static String getRankMessage(String path, Player player, String rank) {
+        return get(path).replace("%player%", player.getName()).replace("%rank%", rank);
     }
 
     public static void reload() {

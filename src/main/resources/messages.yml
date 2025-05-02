@@ -1,4 +1,4 @@
-prefix: "§x§F§B§0§8§0§8E§x§F§1§0§D§0§Dv§x§E§6§1§1§1§1e§x§D§C§1§6§1§6n§x§D§2§1§B§1§Bt§x§C§8§2§0§2§0H§x§B§D§2§4§2§4e§x§B§3§2§9§2§9l§x§A§9§2§E§2§Ep§x§9§E§3§2§3§2e§x§9§4§3§7§3§7r §f•"
+prefix: "§x§F§B§0§8§0§8§lE§x§F§1§0§D§0§D§lv§x§E§6§1§1§1§1§le§x§D§C§1§6§1§6§ln§x§D§2§1§B§1§B§lt§x§C§8§2§0§2§0§lH§x§B§D§2§4§2§4§le§x§B§3§2§9§2§9§ll§x§A§9§2§E§2§E§lp§x§9§E§3§2§3§2§le§x§9§4§3§7§3§7§lr §f•"
 messages:
   # Error zprávy
   onlyPlayer: "%prefix% §cTento příkaz může použít jen hráč. §c✘"
@@ -6,6 +6,7 @@ messages:
   warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje. §c✘"
   warpDeleteFail: "%prefix% §7Nepodařilo se odstranit warp '§c%warp%§7'. §c✘"
   playerNotOnline: "%prefix% §7Hráč '§c%warp%§7' není online. §c✘"
+  playerIsNotOP: "%prefix% §cMusíš mít OP pro použití tohoto příkazu!"
 
   # Usage zprávy
   usageCreate: "%prefix% §cPoužití: /createwarp <název>"
@@ -29,3 +30,9 @@ messages:
   helpReload: "§c/eventhelper reload §7- Znovu načte konfiguraci"
   helpVersion: "§c/eventhelper version §7- Zobrazí verzi pluginu"
   helpHelp: "§c/eventhelper help §7- Zobrazí tuto nápovědu"
+
+  # Rank
+  rankChanged: "%prefix% §7Změnil jsi rank hráče §c%player% §7na %rank%§7."
+  rankSomeoneChanged: "%prefix% §c%player% §7nastavil tvůj rank na §c%rank%§7."
+  unknownRank: "%prefix% §cŠpatný rank! Použitelné ranky: Hrac, Admin, Blue, Green, Red nebo Yellow"
+  rankWrongUsage: "%prefix% §cŠpatné použití! Prosím použij /rank <player> <rank>."
