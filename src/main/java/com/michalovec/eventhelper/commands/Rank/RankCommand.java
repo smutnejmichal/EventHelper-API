@@ -37,7 +37,7 @@ public class RankCommand implements CommandExecutor {
 
                                 player.sendMessage(MessageManager.getRankMessage("messages.rankChanged", target, rank.getDisplay()));
                                 if (target.isOnline()){
-                                    player.sendMessage(MessageManager.getRankMessage("messages.rankSomeoneChanged", player, rank.getDisplay()));
+                                    target.sendMessage(MessageManager.getRankMessage("messages.rankSomeoneChanged", player, rank.getDisplay()));
                                 }
                                 return false;
                             }
