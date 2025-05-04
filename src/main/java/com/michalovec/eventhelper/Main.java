@@ -71,6 +71,9 @@ public final class Main extends JavaPlugin {
         // PLAYER LIST
         getCommand("list").setExecutor(new ListCommand());
 
+        // TEAM CHAT + SPY
+        getCommand("chat").setExecutor(new TeamChat(this));
+
         // LISTENERS
 
         Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
