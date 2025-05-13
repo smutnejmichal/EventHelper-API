@@ -2,10 +2,10 @@ prefix: "§x§F§B§0§8§0§8§lE§x§F§1§0§D§0§D§lv§x§E§6§1§1§1§1
 messages:
   # Error zprávy
   onlyPlayer: "%prefix% §cTento příkaz může použít jen hráč. §c✘"
-  warpExists: "%prefix% §7Warp s názvem '§c%warp%§7' už existuje. §c✘"
-  warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje. §c✘"
+  warpExists: "%prefix% §7Warp s názvem '§c%warp%§7' už existuje."
+  warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje."
   warpDeleteFail: "%prefix% §7Nepodařilo se odstranit warp '§c%warp%§7'. §c✘"
-  playerNotOnline: "%prefix% §7Hráč '§c%warp%§7' není online. §c✘"
+  playerNotOnline: "%prefix% §7Hráč '§c%warp%§7' není online."
   playerIsNotOP: "%prefix% §cMusíš mít OP pro použití tohoto příkazu!"
 
   # Usage zprávy
@@ -36,3 +36,9 @@ messages:
   rankSomeoneChanged: "%prefix% §c%player% §7nastavil tvůj rank na §c%rank%§7."
   unknownRank: "%prefix% §cŠpatný rank! Použitelné ranky: Hrac, Admin, Blue, Green, Red nebo Yellow"
   rankWrongUsage: "%prefix% §cŠpatné použití! Prosím použij /rank <player> <rank>."
+
+  # Chat
+  chatWrongUsageOP: "%prefix% §cPoužití: /chat <zpráva> nebo /chat spy."
+  chatWrongUsage: "%prefix% §cPoužití: /chat <zpráva>."
+  chatSpyModeEnabled: "%prefix% §7Spy mód byl §azapnut§7."
+  chatSpyModeDisabled: "%prefix% §7Spy mód byl §cvypnut§7."
