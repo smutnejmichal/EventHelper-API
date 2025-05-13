@@ -4,6 +4,7 @@ main: com.michalovec.eventhelper.Main
 api-version: '1.21'
 authors: [ Michalovec ]
 commands:
+  chat:
   gma:
     permission: eventhelper.op
   gmc:
