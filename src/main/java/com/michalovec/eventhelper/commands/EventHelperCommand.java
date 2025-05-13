@@ -12,10 +12,18 @@ public class EventHelperCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
             sender.sendMessage(" ");
-            sender.sendMessage(MessageManager.get("messages.helpHeader"));
-            sender.sendMessage(MessageManager.get("messages.helpReload"));
-            sender.sendMessage(MessageManager.get("messages.helpVersion"));
-            sender.sendMessage(MessageManager.get("messages.helpHelp"));
+            sender.sendMessage("§8§m------§r §4EventHelper Help §8§m------");
+            sender.sendMessage("§c/eventhelper reload §7- Znovu načte konfiguraci");
+            sender.sendMessage("§c/eventhelper version §7- Zobrazí verzi pluginu");
+            sender.sendMessage("§c/eventhelper help §7- Zobrazí tuto nápovědu");
+            sender.sendMessage("§c/eventsettings §7- Otevře GUI pro částečné nastavení eventu");
+            sender.sendMessage("§c/rank <hráč> <rank> §7- Nastaví danému hráčovi rank");
+            sender.sendMessage("§c/tphere <hráč> §7- Teleportuje hráče na vaší lokaci");
+            sender.sendMessage("§c/tpall §7- Teleportuje veškeré hráče na vaší lokaci");
+            sender.sendMessage("§c/createwarp §7- Vytvoří warp");
+            sender.sendMessage("§c/removewarp §7- Odstraní warp");
+            sender.sendMessage("§c/warp <warp> §7- Teleporujte vás na daný warp");
+            sender.sendMessage("§c/chat <zpráva | spy> §7- Odešle týmovou zprávu nebo nastaví spy mód");
             sender.sendMessage(" ");
             return true;
         }

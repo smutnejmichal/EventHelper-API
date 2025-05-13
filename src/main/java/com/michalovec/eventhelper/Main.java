@@ -1,5 +1,7 @@
 package com.michalovec.eventhelper;
 
+import com.michalovec.eventhelper.Listeners.ChatListener;
+import com.michalovec.eventhelper.Listeners.EventSettingsGuiListener;
 import com.michalovec.eventhelper.Managers.TabUpdater;
 import com.michalovec.eventhelper.TabCompletetion.RankTabCompleter;
 import com.michalovec.eventhelper.commands.*;
@@ -31,6 +33,7 @@ public final class Main extends JavaPlugin {
 
     private static Main instance;
 
+    private boolean chatEnabled = true;
     private NameTagManager nameTagManager;
     private RankManager rankManager;
 
@@ -50,6 +53,9 @@ public final class Main extends JavaPlugin {
         getCommand("removewarp").setTabCompleter(new WarpTabCompleter());
         getCommand("warp").setExecutor(new WarpCommand());
         getCommand("warp").setTabCompleter(new WarpTabCompleter());
+
+        // GUI
+        getCommand("eventsettings").setExecutor(new EventSettingsCommand(this));
 
         // RANK
         getCommand("rank").setExecutor(new RankCommand(this));
@@ -80,8 +86,11 @@ public final class Main extends JavaPlugin {
         // LISTENERS
         // RANK
         Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
-
         Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
+
+        // GUI
+        Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
 
 
 
@@ -92,9 +101,7 @@ public final class Main extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {
-
-    }
+    public void onDisable() {}
 
     public NameTagManager getNametagManager() {
         return nameTagManager;
@@ -106,5 +113,13 @@ public final class Main extends JavaPlugin {
 
     public static Main getInstance() {
         return instance;
+    }
+
+    public boolean isChatEnabled() {
+        return chatEnabled;
+    }
+
+    public void toggleChatEnabled() {
+        this.chatEnabled = !chatEnabled;
     }
 }

@@ -25,12 +25,6 @@ messages:
   unknownSubcommand: "%prefix% §7Neznámý subpříkaz. Použij §c/eventhelper help"
   versionMessage: "%prefix% §7Běžíš na verzi §cv%version%"
 
-  # Help
-  helpHeader: "§8§m------§r §4EventHelper Help §8§m------"
-  helpReload: "§c/eventhelper reload §7- Znovu načte konfiguraci"
-  helpVersion: "§c/eventhelper version §7- Zobrazí verzi pluginu"
-  helpHelp: "§c/eventhelper help §7- Zobrazí tuto nápovědu"
-
   # Rank
   rankChanged: "%prefix% §7Změnil jsi rank hráče §c%player% §7na %rank%§7."
   rankSomeoneChanged: "%prefix% §c%player% §7nastavil tvůj rank na §c%rank%§7."

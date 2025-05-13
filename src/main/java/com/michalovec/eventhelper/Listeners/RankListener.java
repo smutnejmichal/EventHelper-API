@@ -64,15 +64,4 @@ public class RankListener implements Listener {
         main.getNametagManager().removeTag(e.getPlayer());
     }
 
-    @EventHandler
-    public void onChat (AsyncPlayerChatEvent e){
-
-        e.setCancelled(true);
-
-        Player player = e.getPlayer();
-
-        Bukkit.broadcastMessage(main.getRankManager().getRank(player.getUniqueId()).getDisplay() + " " + ChatColor.WHITE + player.getName() + "§8" + " → " + ChatColor.WHITE + e.getMessage());
-    }
-
-
 }

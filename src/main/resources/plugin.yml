@@ -19,6 +19,7 @@ commands:
     aliases: [ s ]
     permission: eventhelper.op
   eventhelper:
+    aliases: [ eh ]
     permission: eventhelper.op
   rank:
     permission: eventhelper.op
@@ -31,6 +32,9 @@ commands:
   warp:
     permission: eventhelper.op
   list:
+    permission: eventhelper.op
+  eventsettings:
+    aliases: [ es ]
     permission: eventhelper.op
 
 
