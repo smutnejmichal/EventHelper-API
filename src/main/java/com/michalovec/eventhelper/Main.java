@@ -1,5 +1,6 @@
 package com.michalovec.eventhelper;
 
+import com.michalovec.eventhelper.Managers.TabUpdater;
 import com.michalovec.eventhelper.TabCompletetion.RankTabCompleter;
 import com.michalovec.eventhelper.commands.*;
 import com.michalovec.eventhelper.commands.GameMode.GmAdventureCommand;
@@ -40,6 +41,8 @@ public final class Main extends JavaPlugin {
         nameTagManager = new NameTagManager(this);
         rankManager = new RankManager(this);
 
+        new TabUpdater(this).start();
+
         // COMMANDS
         // WARP
         getCommand("createwarp").setExecutor(new CreateWarpCommand());
@@ -72,14 +75,15 @@ public final class Main extends JavaPlugin {
         getCommand("list").setExecutor(new ListCommand());
 
         // TEAM CHAT + SPY
-        getCommand("chat").setExecutor(new TeamChat(this));
+        getCommand("chat").setExecutor(new TeamChatCommand(this));
 
         // LISTENERS
+        // RANK
+        Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
 
         Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
 
-        // RANK
-        Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
+
 
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
