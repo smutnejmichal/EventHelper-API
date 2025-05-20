@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands;
+package com.michalovec.eventhelper.Commands;
 
 import com.michalovec.eventhelper.Main;
 import com.michalovec.eventhelper.Managers.MessageManager;

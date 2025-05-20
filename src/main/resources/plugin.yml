@@ -36,7 +36,11 @@ commands:
   eventsettings:
     aliases: [ es ]
     permission: eventhelper.op
-
+  say:
+    aliases:
+      - minecraft:say
+      - tell
+      - minecraft:tell
 
 
 permissions:

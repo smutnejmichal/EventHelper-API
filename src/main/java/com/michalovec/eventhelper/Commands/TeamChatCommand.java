@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands;
+package com.michalovec.eventhelper.Commands;
 
 import com.michalovec.eventhelper.Enum.Rank;
 import com.michalovec.eventhelper.Main;

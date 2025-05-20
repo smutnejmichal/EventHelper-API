@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands;
+package com.michalovec.eventhelper.Commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

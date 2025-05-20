@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands.GameMode;
+package com.michalovec.eventhelper.Commands.GameMode;
 
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;

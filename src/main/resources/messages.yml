@@ -32,6 +32,7 @@ messages:
   rankWrongUsage: "%prefix% §cŠpatné použití! Prosím použij /rank <player> <rank>."
 
   # Chat
+  chatStatus: "%prefix% §7Chat je aktuálně "
   chatWrongUsageOP: "%prefix% §cPoužití: /chat <zpráva> nebo /chat spy."
   chatWrongUsage: "%prefix% §cPoužití: /chat <zpráva>."
   chatSpyModeEnabled: "%prefix% §7Spy mód byl §azapnut§7."

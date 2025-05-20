@@ -1,10 +1,9 @@
-package com.michalovec.eventhelper.commands.Rank;
+package com.michalovec.eventhelper.Commands.Rank;
 
 import com.michalovec.eventhelper.Enum.Rank;
 import com.michalovec.eventhelper.Main;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

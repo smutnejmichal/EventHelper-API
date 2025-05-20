@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands.Teleport;
+package com.michalovec.eventhelper.Commands.Teleport;
 
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;

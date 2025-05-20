@@ -15,7 +15,7 @@ public class JoinQuitListener implements Listener {
         Player player = event.getPlayer();
         event.setJoinMessage("§2§l+§r " + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
 
-        player.setPlayerListHeaderFooter("\n\n\uE085\n\n\n§fPing: §x§F§F§5§4§5§40ms§f • Hráči: §x§F§F§5§4§5§4" + Bukkit.getOnlinePlayers().size() + "\n", "\n§x§F§C§1§C§1§Cꜱᴛᴏʀᴇ.ʀᴀᴊᴄᴇ.ᴘʀᴏ\n");
+        player.setPlayerListHeaderFooter("\n\n\uE085\n", "\n§fPing: §x§F§F§5§4§5§40ms§f • Hráči: §x§F§F§5§4§5§4" + Bukkit.getOnlinePlayers().size() + "\n");
     }
 
     @EventHandler

@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.commands.Warp;
+package com.michalovec.eventhelper.Commands.Warp;
 
 import com.michalovec.eventhelper.Managers.MessageManager;
 import com.michalovec.eventhelper.Managers.WarpManager;
