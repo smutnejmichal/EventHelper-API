@@ -1,10 +1,10 @@
 package com.michalovec.eventhelper;
 
+import com.michalovec.eventhelper.Commands.BlockedCommands.BlockCommandEvent;
 import com.michalovec.eventhelper.Commands.BlockedCommands.BlockedCommands;
-import com.michalovec.eventhelper.Listeners.ChatListener;
-import com.michalovec.eventhelper.Listeners.EventSettingsGuiListener;
+import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.TabUpdater;
-import com.michalovec.eventhelper.TabCompletetion.RankTabCompleter;
+import com.michalovec.eventhelper.TabCompletetion.*;
 import com.michalovec.eventhelper.Commands.*;
 import com.michalovec.eventhelper.Commands.GameMode.GmAdventureCommand;
 import com.michalovec.eventhelper.Commands.GameMode.GmCreativeCommand;
@@ -17,15 +17,11 @@ import com.michalovec.eventhelper.Commands.Rank.RankCommand;
 import com.michalovec.eventhelper.Commands.Rank.UpdateCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpAllCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpHereCommand;
-import com.michalovec.eventhelper.Listeners.JoinQuitListener;
-import com.michalovec.eventhelper.Listeners.RankListener;
 import com.michalovec.eventhelper.Managers.Rank.NameTagManager;
 import com.michalovec.eventhelper.Managers.Rank.RankManager;
-import com.michalovec.eventhelper.TabCompletetion.EventHelperTabCompleter;
-import com.michalovec.eventhelper.TabCompletetion.TpHereTabCompleter;
-import com.michalovec.eventhelper.TabCompletetion.WarpTabCompleter;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -37,6 +33,7 @@ public final class Main extends JavaPlugin {
     private boolean chatEnabled = true;
     private NameTagManager nameTagManager;
     private RankManager rankManager;
+    private WorldBreakingEvent eventBreaking;
 
     @Override
     public void onEnable() {
@@ -84,6 +81,10 @@ public final class Main extends JavaPlugin {
         // TEAM CHAT + SPY
         getCommand("chat").setExecutor(new TeamChatCommand(this));
 
+        //World Block Breaking
+        getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
+        getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
+
         // BLOCKED COMMANDS
         getCommand("say").setExecutor(new BlockedCommands());
         getCommand("say").setPermission("eventhelper.op");
@@ -98,6 +99,17 @@ public final class Main extends JavaPlugin {
 
         // GUI
         Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
+
+        //World Block Breaking
+        eventBreaking = new WorldBreakingEvent(this);
+        Bukkit.getPluginManager().registerEvents(eventBreaking, this);
+
+        // BLOCKED COMMANDS
+        Bukkit.getPluginManager().registerEvents(new BlockCommandEvent(), this);
+
+        for (World world : Bukkit.getWorlds()){
+            eventBreaking.getWorldAllowedBreaking().put(world, true);
+        }
 
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
@@ -126,5 +138,9 @@ public final class Main extends JavaPlugin {
 
     public void toggleChatEnabled() {
         this.chatEnabled = !chatEnabled;
+    }
+
+    public WorldBreakingEvent getBreakingEvent() {
+        return eventBreaking;
     }
 }

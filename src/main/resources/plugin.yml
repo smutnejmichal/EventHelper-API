@@ -40,6 +40,9 @@ commands:
     aliases:
       - tell
       - me
+  worldgriefing:
+    aliases: [ wg ]
+    permission: eventhelper.op
 
 
 permissions:
