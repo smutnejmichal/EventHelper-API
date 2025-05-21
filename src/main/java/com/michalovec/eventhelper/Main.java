@@ -1,7 +1,5 @@
 package com.michalovec.eventhelper;
 
-import com.michalovec.eventhelper.Commands.BlockedCommands.BlockCommandEvent;
-import com.michalovec.eventhelper.Commands.BlockedCommands.BlockedCommands;
 import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.TabUpdater;
 import com.michalovec.eventhelper.TabCompletetion.*;
