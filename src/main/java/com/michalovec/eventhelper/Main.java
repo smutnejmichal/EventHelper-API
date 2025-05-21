@@ -85,9 +85,6 @@ public final class Main extends JavaPlugin {
         getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
         getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
 
-        // BLOCKED COMMANDS
-        getCommand("say").setExecutor(new BlockedCommands());
-
         // LISTENERS
         // RANK
         Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
@@ -100,9 +97,6 @@ public final class Main extends JavaPlugin {
         //World Block Breaking
         eventBreaking = new WorldBreakingEvent(this);
         Bukkit.getPluginManager().registerEvents(eventBreaking, this);
-
-        // BLOCKED COMMANDS
-        Bukkit.getPluginManager().registerEvents(new BlockCommandEvent(), this);
 
         for (World world : Bukkit.getWorlds()){
             eventBreaking.getWorldAllowedBreaking().put(world, true);

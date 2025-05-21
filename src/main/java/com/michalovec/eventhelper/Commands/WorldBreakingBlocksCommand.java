@@ -42,13 +42,7 @@ public class WorldBreakingBlocksCommand implements CommandExecutor {
                 }
                 player.sendMessage(ChatColor.GREEN + "Ničení blocků na světě: " + world.getName() + " bylo nastaveno na: " + args[1]);
             } else if (args.length == 1) {
-//                if (){
-//                    player.sendMessage(ChatColor.WHITE + "Na světě " + args[0] + ChatColor.GREEN + " se dají těžit blocky");
-//                } else {
-//                    player.sendMessage(ChatColor.WHITE + "Na světě " + args[0] + ChatColor.RED + " se nedají těžit blocky");
-//                }
-
-                player.sendMessage("Na světě " + args[0] + " je nastaveno těžení na: " + String.valueOf(worldBreaking.get(Bukkit.getWorld(args[0]))));
+                player.sendMessage("Na světě " + args[0] + " je nastaveno těžení na: " + worldBreaking.get(Bukkit.getWorld(args[0])));
             } else {
                 player.sendMessage(ChatColor.RED + "Použij formát /wg <svět>");
                 player.sendMessage(ChatColor.RED + "nebo /wg <svět> <true|false>");
