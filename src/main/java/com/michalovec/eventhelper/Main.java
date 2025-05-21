@@ -86,6 +86,9 @@ public final class Main extends JavaPlugin {
 
         // BLOCKED COMMANDS
         getCommand("say").setExecutor(new BlockedCommands());
+        getCommand("say").setPermission("eventhelper.op");
+        getCommand("tell").setPermission("eventhelper.op");
+        getCommand("me").setPermission("eventhelper.op");
 
         // LISTENERS
         // RANK

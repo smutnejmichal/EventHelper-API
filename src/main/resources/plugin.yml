@@ -38,11 +38,8 @@ commands:
     permission: eventhelper.op
   say:
     aliases:
-      - minecraft:say
       - tell
-      - minecraft:tell
       - me
-      - minecraft:me
 
 
 permissions:
