@@ -3,49 +3,96 @@ version: '1.1'
 main: com.michalovec.eventhelper.Main
 api-version: '1.21'
 authors: [ Michalovec, LordKingCZ ]
+
 commands:
   chat:
+    permission: eventhelper.chat
   gma:
-    permission: eventhelper.op
+    permission: eventhelper.gma
   gmc:
-    permission: eventhelper.op
+    permission: eventhelper.gmc
   gmsp:
-    permission: eventhelper.op
+    permission: eventhelper.gmsp
   gms:
-    permission: eventhelper.op
+    permission: eventhelper.gms
   tpall:
-    permission: eventhelper.op
+    permission: eventhelper.tpall
   tphere:
     aliases: [ s ]
-    permission: eventhelper.op
+    permission: eventhelper.tphere
   eventhelper:
     aliases: [ eh ]
-    permission: eventhelper.op
+    permission: eventhelper.eventhelper
   rank:
-    permission: eventhelper.op
+    permission: eventhelper.rank
   updateranks:
-    permission: eventhelper.op
+    permission: eventhelper.updateranks
   createwarp:
-    permission: eventhelper.op
+    permission: eventhelper.createwarp
   removewarp:
-    permission: eventhelper.op
+    permission: eventhelper.removewarp
   warp:
-    permission: eventhelper.op
+    permission: eventhelper.warp
   list:
-    permission: eventhelper.op
+    permission: eventhelper.list
   eventsettings:
     aliases: [ es ]
-    permission: eventhelper.op
-  say:
-    aliases:
-      - tell
-      - me
+    permission: eventhelper.eventsettings
   worldgriefing:
     aliases: [ wg ]
-    permission: eventhelper.op
-
+    permission: eventhelper.worldgriefing
 
 permissions:
-  eventhelper.op:
-    description: Pouze pro OP
-    default: op
+  eventhelper.*:
+    description: Všechna oprávnění pro EventHelper
+    children:
+      eventhelper.chat: true
+      eventhelper.gma: true
+      eventhelper.gmc: true
+      eventhelper.gmsp: true
+      eventhelper.gms: true
+      eventhelper.tpall: true
+      eventhelper.tphere: true
+      eventhelper.eventhelper: true
+      eventhelper.rank: true
+      eventhelper.updateranks: true
+      eventhelper.createwarp: true
+      eventhelper.removewarp: true
+      eventhelper.warp: true
+      eventhelper.list: true
+      eventhelper.eventsettings: true
+      eventhelper.worldgriefing: true
+
+  eventhelper.chat:
+    description: Povolení pro /chat
+  eventhelper.gma:
+    description: Povolení pro /gma
+  eventhelper.gmc:
+    description: Povolení pro /gmc
+  eventhelper.gmsp:
+    description: Povolení pro /gmsp
+  eventhelper.gms:
+    description: Povolení pro /gms
+  eventhelper.tpall:
+    description: Povolení pro /tpall
+  eventhelper.tphere:
+    description: Povolení pro /tphere
+  eventhelper.eventhelper:
+    description: Povolení pro /eventhelper nebo /eh
+  eventhelper.rank:
+    description: Povolení pro /rank
+  eventhelper.updateranks:
+    description: Povolení pro /updateranks
+  eventhelper.createwarp:
+    description: Povolení pro /createwarp
+  eventhelper.removewarp:
+    description: Povolení pro /removewarp
+  eventhelper.warp:
+    description: Povolení pro /warp
+  eventhelper.list:
+    description: Povolení pro /list
+  eventhelper.eventsettings:
+    description: Povolení pro /eventsettings nebo /es
+  eventhelper.worldgriefing:
+    description: Povolení pro /worldgriefing nebo /wg
+
