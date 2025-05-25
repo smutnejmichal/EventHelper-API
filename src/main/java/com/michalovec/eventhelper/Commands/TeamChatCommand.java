@@ -58,7 +58,7 @@ public class TeamChatCommand implements CommandExecutor {
 
         Rank playerRank = getRank(player);
         String message = String.join(" ", args);
-        String formattedMessage = "§8[§4Týmová zpráva§8] " + ChatColor.WHITE + player.getName() + "§8 → " + ChatColor.WHITE + message;
+        String formattedMessage = "§8[§4Chat§8] " + ChatColor.WHITE + player.getName() + "§8 → " + ChatColor.WHITE + message;
         String spyMessage = "§8[§4Spy§8] §7(Tým: " + playerRank.name() + ") " + ChatColor.WHITE + player.getName() + "§8 → " + ChatColor.WHITE + message;
 
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -70,7 +70,7 @@ public class TeamChatCommand implements CommandExecutor {
 
         // Spy mód - admini vidí všechny zprávy s označením týmu
         for (Player spy : spies) {
-            if (spy != player) {
+            if (spy != player && playerRank != Rank.ADMIN) {
                 spy.sendMessage(ChatColor.GRAY + spyMessage);
             }
         }
