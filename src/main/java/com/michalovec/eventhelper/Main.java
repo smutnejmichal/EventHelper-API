@@ -65,7 +65,7 @@ public final class Main extends JavaPlugin {
         // TELEPORT
         getCommand("tpall").setExecutor(new TpAllCommand());
         getCommand("tphere").setExecutor(new TpHereCommand());
-        getCommand("tphere").setTabCompleter(new TpHereTabCompleter());
+        getCommand("tphere").setTabCompleter(new PlayerCompleter());
 
         // GAMEMODE
         getCommand("gma").setExecutor(new GmAdventureCommand());
@@ -79,9 +79,17 @@ public final class Main extends JavaPlugin {
         // TEAM CHAT + SPY
         getCommand("chat").setExecutor(new TeamChatCommand(this));
 
-        //World Block Breaking
+        // World Block Breaking
         getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
         getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
+
+        // HEAL
+        getCommand("heal").setExecutor(new HealCommand());
+        getCommand("heal").setTabCompleter(new PlayerCompleter());
+
+        // FEED
+        getCommand("feed").setExecutor(new FeedCommand());
+        getCommand("feed").setTabCompleter(new PlayerCompleter());
 
         // LISTENERS
         // RANK

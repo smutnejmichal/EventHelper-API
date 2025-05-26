@@ -37,3 +37,9 @@ messages:
   chatWrongUsage: "%prefix% §cPoužití: /chat <zpráva>."
   chatSpyModeEnabled: "%prefix% §7Spy mód byl §azapnut§7."
   chatSpyModeDisabled: "%prefix% §7Spy mód byl §cvypnut§7."
+
+  # Heal / Feed
+  healWrongUsage: "%prefix% §cPoužití: /heal <hráč>."
+  feedWrongUsage: "%prefix% §cPoužití: /feed <hráč>."
+  playerHeal: "%prefix% §7Hráč §c%warp% §7byl úspěšně uzdraven."
+  playerFeed: "%prefix% §7Hráč §c%warp% §7byl úspěšně najezen."

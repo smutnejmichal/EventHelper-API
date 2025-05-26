@@ -1,6 +1,7 @@
 package com.michalovec.eventhelper.Commands;
 
 import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -25,6 +26,10 @@ public class EventSettingsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player player)) return false;
+        if (!sender.isOp()) {
+            player.sendMessage(MessageManager.get("messages.playerIsNotOP"));
+            return false;
+        }
 
         Inventory gui = Bukkit.createInventory(null, 9, "§x§E§4§3§A§9§6§lE§x§D§D§3§A§9§A§lv§x§D§6§3§A§9§E§le§x§C§F§3§A§A§3§ln§x§C§8§3§A§A§7§lt §x§B§A§3§A§A§F§lS§x§B§3§3§9§B§4§le§x§A§C§3§9§B§8§lt§x§A§5§3§9§B§C§lt§x§9§E§3§9§C§0§li§x§9§7§3§9§C§5§ln§x§9§0§3§9§C§9§lg§x§8§9§3§9§C§D§ls");
 
