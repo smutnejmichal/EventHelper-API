@@ -20,7 +20,6 @@ public class WorldBreakingBlocksCommand implements CommandExecutor {
     }
 
 
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
 
