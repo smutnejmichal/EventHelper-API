@@ -3,6 +3,7 @@ version: '1.1'
 main: com.michalovec.eventhelper.Main
 api-version: '1.21'
 authors: [ Michalovec, LordKingCZ ]
+depend: [MultiWorld]
 
 commands:
   chat:

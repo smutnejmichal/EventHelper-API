@@ -104,9 +104,6 @@ public final class Main extends JavaPlugin {
         eventBreaking = new WorldBreakingEvent(this);
         Bukkit.getPluginManager().registerEvents(eventBreaking, this);
 
-        for (World world : Bukkit.getWorlds()){
-            eventBreaking.getWorldAllowedBreaking().put(world, true);
-        }
 
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
@@ -124,6 +121,9 @@ public final class Main extends JavaPlugin {
         System.out.println();
         getLogger().info("Loading configuration...");
 
+        for (World world : Bukkit.getWorlds()){
+            eventBreaking.getWorldAllowedBreaking().put(world, true);
+        }
     }
 
     @Override
