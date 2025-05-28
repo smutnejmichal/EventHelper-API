@@ -35,6 +35,15 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        String RED = "\u001B[91m";
+        String DARK_RED = "\u001B[31m";
+        String ORANGE = "\u001B[33m";
+        String GRAY = "\u001B[90m";
+
+        System.out.print(RED + "   __" + "\n");
+        System.out.print(RED + "  |__ " + DARK_RED + "|__|   " + ORANGE + "EventHelper " + RED + "v" + getDescription().getVersion() + "\n");
+        System.out.print(RED + "  |__ " + DARK_RED + "|  |   " + GRAY + "Running on Bukkit - " + getServer().getName() + "\n");
+        System.out.println();
         instance = this;
 
         nameTagManager = new NameTagManager(this);
@@ -91,6 +100,10 @@ public final class Main extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("feed").setTabCompleter(new PlayerCompleter());
 
+        // SPEED
+        getCommand("speed").setExecutor(new SpeedCommand());
+        getCommand("speed").setTabCompleter(new SpeedTabCompleter());
+
         // LISTENERS
         // RANK
         Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
@@ -104,22 +117,13 @@ public final class Main extends JavaPlugin {
         eventBreaking = new WorldBreakingEvent(this);
         Bukkit.getPluginManager().registerEvents(eventBreaking, this);
 
-
+        getLogger().info("Loading configuration...");
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
 
         MessageManager.setup();
 
-        String RED = "\u001B[91m";
-        String DARK_RED = "\u001B[31m";
-        String ORANGE = "\u001B[33m";
-        String GRAY = "\u001B[90m";
 
-        System.out.print(RED + "   __" + "\n");
-        System.out.print(RED + "  |__ " + DARK_RED + "|__|   " + ORANGE + "EventHelper " + RED + "v" + getDescription().getVersion() + "\n");
-        System.out.print(RED + "  |__ " + DARK_RED + "|  |   " + GRAY + "Running on Bukkit - " + getServer().getName() + "\n");
-        System.out.println();
-        getLogger().info("Loading configuration...");
 
         for (World world : Bukkit.getWorlds()){
             eventBreaking.getWorldAllowedBreaking().put(world, true);

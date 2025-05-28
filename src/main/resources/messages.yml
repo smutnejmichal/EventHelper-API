@@ -43,3 +43,8 @@ messages:
   feedWrongUsage: "%prefix% §cPoužití: /feed <hráč>."
   playerHeal: "%prefix% §7Hráč §c%warp% §7byl úspěšně uzdraven."
   playerFeed: "%prefix% §7Hráč §c%warp% §7byl úspěšně najezen."
+
+  # Speed
+  speedWrongUsage: "%prefix% §cPoužití: /speed <číslo>."
+  speedNumberMustBeInt: "%prefix% §cHodnota musí být celé číslo."
+  speedChanged: "%prefix% §7Tvá rychlost byla nastavena na §c%warp%§7."

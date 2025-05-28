@@ -46,6 +46,8 @@ commands:
     permission: eventhelper.heal
   feed:
     permission: eventhelper.feed
+  speed:
+    permission: eventhelper.speed
 
 permissions:
   eventhelper.*:
@@ -69,6 +71,7 @@ permissions:
       eventhelper.worldgriefing: true
       eventhelper.heal: true
       eventhelper.feed: true
+      eventhelper.speed: true
 
   eventhelper.chat:
     description: Povolení pro /chat
@@ -106,4 +109,6 @@ permissions:
     description: Povolení pro /heal
   eventhelper.feed:
     description: Povolení pro /feed
+  eventhelper.speed:
+    description: Povolení pro /speed
 
