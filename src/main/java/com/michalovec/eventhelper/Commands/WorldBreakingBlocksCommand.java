@@ -38,7 +38,7 @@ public class WorldBreakingBlocksCommand implements CommandExecutor {
                 }
 
                 return false;
-            }else if (args.length == 2 && !Boolean.parseBoolean(args[1])){
+            }else if (args.length == 2 && (Boolean.parseBoolean(args[1]) || !Boolean.parseBoolean(args[1]))){
                 World world = Bukkit.getWorld(args[0]);
                 if (world == null) return true;
                 if (worldBreaking.containsKey(world)){
