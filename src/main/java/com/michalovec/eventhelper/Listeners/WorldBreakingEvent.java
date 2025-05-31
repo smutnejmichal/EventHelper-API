@@ -2,6 +2,7 @@ package com.michalovec.eventhelper.Listeners;
 
 import com.michalovec.eventhelper.Enum.Rank;
 import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.Managers.WorldBreakingManager;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
@@ -14,8 +15,6 @@ public class WorldBreakingEvent implements Listener {
 
     private Main main;
 
-    private final HashMap<World, Boolean> worldAllowedBreaking = new HashMap<>();
-
     public WorldBreakingEvent(Main main){
         this.main = main;
     }
@@ -24,20 +23,17 @@ public class WorldBreakingEvent implements Listener {
     @EventHandler
     public void onBreaking(BlockBreakEvent e){
 
+        HashMap<World, Boolean> manager = main.getWorldBreakingManager().getWorldAllowedBreaking();
+
         if (main.getRankManager().getRank(e.getPlayer().getUniqueId()) == Rank.ADMIN) return;
 
-        if (!worldAllowedBreaking.containsKey(e.getBlock().getWorld())){
-            worldAllowedBreaking.put(e.getBlock().getWorld(), true);
+        if (!manager.containsKey(e.getBlock().getWorld())){
+            manager.put(e.getBlock().getWorld(), true);
         }
 
-        if (!worldAllowedBreaking.get(e.getBlock().getWorld())){
+        if (!manager.get(e.getBlock().getWorld())){
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.RED + "Na tomto světě je zakázáno ničit blocky");
         }
-    }
-
-
-    public HashMap<World, Boolean> getWorldAllowedBreaking() {
-        return worldAllowedBreaking;
     }
 }

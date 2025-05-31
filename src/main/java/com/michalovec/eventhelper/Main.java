@@ -2,6 +2,7 @@ package com.michalovec.eventhelper;
 
 import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.TabUpdater;
+import com.michalovec.eventhelper.Managers.WorldBreakingManager;
 import com.michalovec.eventhelper.TabCompletetion.*;
 import com.michalovec.eventhelper.Commands.*;
 import com.michalovec.eventhelper.Commands.GameMode.GmAdventureCommand;
@@ -31,7 +32,7 @@ public final class Main extends JavaPlugin {
     private boolean chatEnabled = true;
     private NameTagManager nameTagManager;
     private RankManager rankManager;
-    private WorldBreakingEvent eventBreaking;
+    private WorldBreakingManager worldBreakingManager;
 
     @Override
     public void onEnable() {
@@ -48,6 +49,7 @@ public final class Main extends JavaPlugin {
 
         nameTagManager = new NameTagManager(this);
         rankManager = new RankManager(this);
+        worldBreakingManager = new WorldBreakingManager(this);
 
         new TabUpdater(this).start();
 
@@ -100,10 +102,6 @@ public final class Main extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("feed").setTabCompleter(new PlayerCompleter());
 
-        // SPEED
-        getCommand("speed").setExecutor(new SpeedCommand());
-        getCommand("speed").setTabCompleter(new SpeedTabCompleter());
-
         // LISTENERS
         // RANK
         Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
@@ -114,8 +112,10 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
 
         //World Block Breaking
-        eventBreaking = new WorldBreakingEvent(this);
-        Bukkit.getPluginManager().registerEvents(eventBreaking, this);
+        Bukkit.getPluginManager().registerEvents(new WorldBreakingEvent(this), this);
+
+        //World Block Breaking Loading
+        worldBreakingManager.loadWorldsBreaking();
 
         getLogger().info("Loading configuration...");
         File warpFolder = new File(getDataFolder(), "warps");
@@ -123,11 +123,6 @@ public final class Main extends JavaPlugin {
 
         MessageManager.setup();
 
-
-
-        for (World world : Bukkit.getWorlds()){
-            eventBreaking.getWorldAllowedBreaking().put(world, true);
-        }
     }
 
     @Override
@@ -141,6 +136,10 @@ public final class Main extends JavaPlugin {
         return rankManager;
     }
 
+    public WorldBreakingManager getWorldBreakingManager() {
+        return worldBreakingManager;
+    }
+
     public static Main getInstance() {
         return instance;
     }
@@ -151,9 +150,5 @@ public final class Main extends JavaPlugin {
 
     public void toggleChatEnabled() {
         this.chatEnabled = !chatEnabled;
-    }
-
-    public WorldBreakingEvent getBreakingEvent() {
-        return eventBreaking;
     }
 }
