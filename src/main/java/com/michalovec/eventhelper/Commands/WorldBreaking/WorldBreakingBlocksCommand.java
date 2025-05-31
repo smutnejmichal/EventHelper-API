@@ -1,4 +1,4 @@
-package com.michalovec.eventhelper.Commands;
+package com.michalovec.eventhelper.Commands.WorldBreaking;
 
 import com.michalovec.eventhelper.Main;
 import org.bukkit.Bukkit;
