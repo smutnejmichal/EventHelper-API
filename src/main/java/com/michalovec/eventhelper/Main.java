@@ -115,10 +115,11 @@ public final class Main extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new WorldBreakingEvent(this), this);
 
         //World Block Breaking Loading
-        worldBreakingManager.loadWorldsBreaking();
         getLogger().info("Loading breaking permissions for each world...");
+        worldBreakingManager.loadWorldsBreaking();
 
-        getLogger().info("Loading configuration...");
+
+        getLogger().info("Loading warps...");
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
 
