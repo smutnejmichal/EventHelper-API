@@ -116,6 +116,7 @@ public final class Main extends JavaPlugin {
 
         //World Block Breaking Loading
         worldBreakingManager.loadWorldsBreaking();
+        getLogger().info("Loading breaking permissions for each world...");
 
         getLogger().info("Loading configuration...");
         File warpFolder = new File(getDataFolder(), "warps");
