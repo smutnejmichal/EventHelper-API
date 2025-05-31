@@ -10,6 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class WorldBreakingEvent implements Listener {
 
@@ -24,6 +25,7 @@ public class WorldBreakingEvent implements Listener {
     public void onBreaking(BlockBreakEvent e){
 
         HashMap<World, Boolean> manager = main.getWorldBreakingManager().getWorldAllowedBreaking();
+        HashMap<World, List<String>> materials = main.getWorldBreakingManager().getBypassBreaking();
 
         if (main.getRankManager().getRank(e.getPlayer().getUniqueId()) == Rank.ADMIN) return;
 
@@ -32,6 +34,12 @@ public class WorldBreakingEvent implements Listener {
         }
 
         if (!manager.get(e.getBlock().getWorld())){
+
+            if (materials.get(e.getBlock().getWorld()).contains(e.getBlock().getType().name())){
+                e.setCancelled(false);
+                return;
+            }
+
             e.setCancelled(true);
             e.getPlayer().sendMessage(ChatColor.RED + "Na tomto světě je zakázáno ničit blocky");
         }

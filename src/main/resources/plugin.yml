@@ -42,6 +42,11 @@ commands:
   worldgriefing:
     aliases: [ wg ]
     permission: eventhelper.worldgriefing
+  worldgriefingbypass:
+    aliases:
+      - wgbypass
+      - wgbp
+    permission: eventhelper.worldgriefing
   heal:
     permission: eventhelper.heal
   feed:

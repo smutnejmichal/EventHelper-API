@@ -1,5 +1,7 @@
 package com.michalovec.eventhelper;
 
+import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingBlocksCommand;
+import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingByPassCmd;
 import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.TabUpdater;
 import com.michalovec.eventhelper.Managers.WorldBreakingManager;
@@ -19,8 +21,9 @@ import com.michalovec.eventhelper.Commands.Teleport.TpHereCommand;
 import com.michalovec.eventhelper.Managers.Rank.NameTagManager;
 import com.michalovec.eventhelper.Managers.Rank.RankManager;
 import com.michalovec.eventhelper.Managers.MessageManager;
+import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingBlocksTabCompleter;
+import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingByPassTabCompleter;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -93,6 +96,9 @@ public final class Main extends JavaPlugin {
         // World Block Breaking
         getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
         getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
+
+        getCommand("worldgriefingbypass").setExecutor(new WorldBreakingByPassCmd(this));
+        getCommand("worldgriefingbypass").setTabCompleter(new WorldBreakingByPassTabCompleter());
 
         // HEAL
         getCommand("heal").setExecutor(new HealCommand());

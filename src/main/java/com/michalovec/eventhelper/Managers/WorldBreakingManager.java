@@ -2,15 +2,16 @@ package com.michalovec.eventhelper.Managers;
 
 import com.michalovec.eventhelper.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.List;
 
 public class WorldBreakingManager {
 
@@ -19,6 +20,7 @@ public class WorldBreakingManager {
     private YamlConfiguration config;
 
     private final HashMap<World, Boolean> worldAllowedBreaking = new HashMap<>();
+    private final HashMap<World, List<String>> bypassBreaking = new HashMap<>();
 
     public WorldBreakingManager(Main main){
         this.main = main;
@@ -44,7 +46,43 @@ public class WorldBreakingManager {
         saveConfig();
     }
 
-    public void addWorld(World world, boolean breaking){
+    public void addBlock(World world, String material){
+        List<String> materials = (List<String>) config.getList("worlds." + world.getName() + ".allowedBreaking");
+        assert materials != null;
+        materials.add(material);
+
+        bypassBreaking.replace(world, materials);
+
+        config.set("worlds." + world.getName() + ".allowedBreaking", null);
+        config.set("worlds." + world.getName() + ".allowedBreaking", materials);
+        saveConfig();
+    }
+
+    public void removeBlock(World world, String material){
+        List<String> materials = (List<String>) config.getList("worlds." + world.getName() + ".allowedBreaking");
+        assert materials != null;
+        materials.remove(material);
+
+        bypassBreaking.replace(world, materials);
+
+        config.set("worlds." + world.getName() + ".allowedBreaking", null);
+        config.set("worlds." + world.getName() + ".allowedBreaking", materials);
+        saveConfig();
+    }
+
+    public void removeAll(World world){
+        List<String> materials = (List<String>) config.getList("worlds." + world.getName() + ".allowedBreaking");
+        assert materials != null;
+        materials.clear();
+
+        bypassBreaking.replace(world, materials);
+
+        config.set("worlds." + world.getName() + ".allowedBreaking", null);
+        config.set("worlds." + world.getName() + ".allowedBreaking", materials);
+        saveConfig();
+    }
+
+    public void addWorld(World world, boolean breaking, List<String> typeOfBlocks){
 
         if (world.getName().equalsIgnoreCase("reload") || world.getName().equalsIgnoreCase("false") || world.getName().equalsIgnoreCase("true")){
             main.getLogger().warning("Svět se nemůže rovnat " + world.getName());
@@ -53,6 +91,7 @@ public class WorldBreakingManager {
 
         config.set("worlds." + world.getName() + ".uuid", world.getUID().toString());
         config.set("worlds." + world.getName() + ".breaking", breaking);
+        config.set("worlds." + world.getName() + ".allowedBreaking", typeOfBlocks);
 
         saveConfig();
     }
@@ -72,6 +111,8 @@ public class WorldBreakingManager {
 
             boolean value = config.getBoolean("worlds." + str + ".breaking");
             worldAllowedBreaking.put(world, value);
+            List<String> materials = (List<String>) config.getList("worlds." + world.getName() + ".allowedBreaking");
+            bypassBreaking.put(world, materials);
 
         }
     }
@@ -93,7 +134,7 @@ public class WorldBreakingManager {
 
         for (World world : Bukkit.getWorlds()){
             if (!config.contains("worlds." + world.getName())){
-                addWorld(world, true);
+                addWorld(world, true, new ArrayList<>());
             }
         }
 
@@ -115,5 +156,9 @@ public class WorldBreakingManager {
 
     public HashMap<World, Boolean> getWorldAllowedBreaking() {
         return worldAllowedBreaking;
+    }
+
+    public HashMap<World, List<String>> getBypassBreaking() {
+        return bypassBreaking;
     }
 }
