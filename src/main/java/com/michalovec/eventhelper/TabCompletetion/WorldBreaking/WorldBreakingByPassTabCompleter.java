@@ -22,18 +22,36 @@ public class WorldBreakingByPassTabCompleter implements TabCompleter {
                 String name = world.getName();
                 names.add(name);
             }
+            names.add("removeAll");
+            names.add("remove");
+            names.add("add");
             return StringUtil.copyPartialMatches(args[0], names, new ArrayList<>());
         } else if (args.length == 2) {
+            if (args[0].equalsIgnoreCase("removeAll")) return new ArrayList<>();
+            if (args[0].equalsIgnoreCase("remove") || args[0].equalsIgnoreCase("add")){
+                List<String> nameOfMaterial = new ArrayList<>();
+                for (Material material : Material.values()){
+                    if (material.isBlock()){
+                        String name = material.name().toLowerCase();
+                        nameOfMaterial.add(name);
+                    }
+                }
+                return StringUtil.copyPartialMatches(args[1], nameOfMaterial, new ArrayList<>());
+            }
             return StringUtil.copyPartialMatches(args[1], Arrays.asList("removeAll", "remove", "add"), new ArrayList<>());
         } else if (args.length == 3) {
-            List<String> nameOfMaterial = new ArrayList<>();
-            for (Material material : Material.values()){
-                if (material.isBlock()){
-                    String name = material.name().toLowerCase();
-                    nameOfMaterial.add(name);
+            if (args[1].equalsIgnoreCase("remove") || args[1].equalsIgnoreCase("add")){
+                List<String> nameOfMaterial = new ArrayList<>();
+                for (Material material : Material.values()){
+                    if (material.isBlock()){
+                        String name = material.name().toLowerCase();
+                        nameOfMaterial.add(name);
+                    }
                 }
+                return StringUtil.copyPartialMatches(args[2], nameOfMaterial, new ArrayList<>());
+            } else {
+                return new ArrayList<>();
             }
-            return StringUtil.copyPartialMatches(args[2], nameOfMaterial, new ArrayList<>());
         }
         return new ArrayList<>();
     }
