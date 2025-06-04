@@ -1,5 +1,7 @@
 package com.michalovec.eventhelper.Managers;
 
+import com.michalovec.eventhelper.Core.GameTeam;
+import com.michalovec.eventhelper.Core.TeamAPI;
 import com.michalovec.eventhelper.EventHelper;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
@@ -35,11 +37,12 @@ public class TeamPlaceholder extends PlaceholderExpansion {
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
         if (identifier.equals("team_prefix")) {
-            if (plugin.getTestManager().isGameRunning()) {
-                return plugin.getRankManager().getRank(player.getUniqueId()).getDisplay();
-            } else {
+//            if (plugin.getTestManager().isGameRunning()) {
+                GameTeam team = TeamAPI.getTeam(player.getUniqueId());
+                if (team != null) return team.getDisplayName();
+//            } else {
                 return "%luckperms_prefix%";
-            }
+//            }
         }
         return null;
     }

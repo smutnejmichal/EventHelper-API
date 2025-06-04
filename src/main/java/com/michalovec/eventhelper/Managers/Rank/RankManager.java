@@ -91,8 +91,6 @@ public class RankManager {
         }
     }
 
-    public Rank getRank1(UUID uuid){ return (Rank) config.get(uuid.toString());}
-
     public Rank getRank(UUID uuid){ return findEnumValue(Rank.class, config.getString(uuid.toString()));}
 
     public HashMap<UUID, PermissionAttachment> getPerms() {return perms;}
