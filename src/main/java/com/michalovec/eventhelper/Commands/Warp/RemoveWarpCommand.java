@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands.Warp;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,7 +24,7 @@ public class RemoveWarpCommand implements CommandExecutor {
             return true;
         }
 
-        File warpFile = new File(Main.getInstance().getDataFolder(), "warps/" + args[0] + ".yml");
+        File warpFile = new File(EventHelper.getInstance().getDataFolder(), "warps/" + args[0] + ".yml");
 
         String name = args[0];
 

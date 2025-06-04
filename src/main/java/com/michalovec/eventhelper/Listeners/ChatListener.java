@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Listeners;
 
-import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -11,21 +11,28 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatListener implements Listener {
 
-    private final Main main;
+    private final EventHelper plugin;
 
-    public ChatListener(Main main) {
-        this.main = main;
+    public ChatListener(EventHelper plugin) {
+        this.plugin = plugin;
     }
 
     @EventHandler
     public void onChat (AsyncPlayerChatEvent e){
         e.setCancelled(true);
         Player player = e.getPlayer();
-        if (!main.isChatEnabled() && main.getRankManager().getRank(player.getUniqueId()) != Rank.ADMIN) {
+        if (!plugin.isChatEnabled() && (!player.hasPermission("eventhelper.admin") || player.hasPermission("eventhelper.chat.bypass"))) {
             player.sendMessage("§cChat je vypnutý!");
             return;
         }
 
-        Bukkit.broadcastMessage(main.getRankManager().getRank(player.getUniqueId()).getDisplay() + " " + ChatColor.WHITE + player.getName() + "§8" + " → " + ChatColor.WHITE + e.getMessage());
+        String prefix;
+        if (plugin.getTestManager().isGameRunning()) {
+            prefix = plugin.getRankManager().getRank(player.getUniqueId()).getDisplay();
+        } else {
+            prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%");
+        }
+
+        Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " → " + ChatColor.WHITE + e.getMessage());
     }
 }

@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands.Rank;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
 
 public class UpdateCommand implements CommandExecutor {
 
-    private Main main;
+    private EventHelper main;
 
-    public UpdateCommand(Main main){
+    public UpdateCommand(EventHelper main){
         this.main = main;
     }
 

@@ -1,15 +1,15 @@
 package com.michalovec.eventhelper.Managers;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class TabUpdater extends BukkitRunnable {
 
-    private final Main plugin;
+    private final EventHelper plugin;
 
-    public TabUpdater(Main plugin) {
+    public TabUpdater(EventHelper plugin) {
         this.plugin = plugin;
     }
 

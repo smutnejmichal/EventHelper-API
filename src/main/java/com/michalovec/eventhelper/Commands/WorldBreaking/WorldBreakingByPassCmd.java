@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands.WorldBreaking;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -9,15 +9,14 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import javax.swing.text.PlainDocument;
 import java.util.HashMap;
 import java.util.List;
 
 public class WorldBreakingByPassCmd implements CommandExecutor {
 
-    private Main main;
+    private EventHelper main;
 
-    public WorldBreakingByPassCmd(Main main){
+    public WorldBreakingByPassCmd(EventHelper main){
         this.main = main;
     }
 

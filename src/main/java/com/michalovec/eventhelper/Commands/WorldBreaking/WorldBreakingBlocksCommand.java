@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands.WorldBreaking;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -13,9 +13,9 @@ import java.util.HashMap;
 
 public class WorldBreakingBlocksCommand implements CommandExecutor {
 
-    private Main main;
+    private EventHelper main;
 
-    public WorldBreakingBlocksCommand(Main main){
+    public WorldBreakingBlocksCommand(EventHelper main){
         this.main = main;
     }
 

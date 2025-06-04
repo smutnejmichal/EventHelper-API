@@ -1,8 +1,7 @@
 package com.michalovec.eventhelper.Managers;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -15,14 +14,14 @@ import java.util.List;
 
 public class WorldBreakingManager {
 
-    private Main main;
+    private EventHelper main;
     private File file;
     private YamlConfiguration config;
 
     private final HashMap<World, Boolean> worldAllowedBreaking = new HashMap<>();
     private final HashMap<World, List<String>> bypassBreaking = new HashMap<>();
 
-    public WorldBreakingManager(Main main){
+    public WorldBreakingManager(EventHelper main){
         this.main = main;
 
         if (!main.getDataFolder().exists()){

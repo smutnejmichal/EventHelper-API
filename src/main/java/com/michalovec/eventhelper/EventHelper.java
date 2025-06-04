@@ -3,8 +3,7 @@ package com.michalovec.eventhelper;
 import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingBlocksCommand;
 import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingByPassCmd;
 import com.michalovec.eventhelper.Listeners.*;
-import com.michalovec.eventhelper.Managers.TabUpdater;
-import com.michalovec.eventhelper.Managers.WorldBreakingManager;
+import com.michalovec.eventhelper.Managers.*;
 import com.michalovec.eventhelper.TabCompletetion.*;
 import com.michalovec.eventhelper.Commands.*;
 import com.michalovec.eventhelper.Commands.GameMode.GmAdventureCommand;
@@ -20,7 +19,6 @@ import com.michalovec.eventhelper.Commands.Teleport.TpAllCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpHereCommand;
 import com.michalovec.eventhelper.Managers.Rank.NameTagManager;
 import com.michalovec.eventhelper.Managers.Rank.RankManager;
-import com.michalovec.eventhelper.Managers.MessageManager;
 import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingBlocksTabCompleter;
 import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingByPassTabCompleter;
 import org.bukkit.Bukkit;
@@ -28,14 +26,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 
-public final class Main extends JavaPlugin {
+public final class EventHelper extends JavaPlugin {
 
-    private static Main instance;
+    private static EventHelper instance;
 
     private boolean chatEnabled = true;
     private NameTagManager nameTagManager;
     private RankManager rankManager;
     private WorldBreakingManager worldBreakingManager;
+    private TestManager testManager;
 
     @Override
     public void onEnable() {
@@ -54,7 +53,7 @@ public final class Main extends JavaPlugin {
         rankManager = new RankManager(this);
         worldBreakingManager = new WorldBreakingManager(this);
 
-        new TabUpdater(this).start();
+//        new TabUpdater(this).start();
 
         // COMMANDS
         // WARP
@@ -91,7 +90,7 @@ public final class Main extends JavaPlugin {
         getCommand("list").setExecutor(new ListCommand());
 
         // TEAM CHAT + SPY
-        getCommand("chat").setExecutor(new TeamChatCommand(this));
+//        getCommand("chat").setExecutor(new TeamChatCommand(this));
 
         // World Block Breaking
         getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
@@ -107,6 +106,16 @@ public final class Main extends JavaPlugin {
         // FEED
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("feed").setTabCompleter(new PlayerCompleter());
+
+        getLogger().info("Registering placeholder...");
+        testManager = new TestManager();
+        getCommand("test").setExecutor(new TestCommand(this));
+
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
+            new TeamPlaceholder(this).register(); //
+        } else {
+            getLogger().warning("PlayerholderAPI nebylo nalezeno, placeholder nebude fungovat!");
+        }
 
         // LISTENERS
         // RANK
@@ -148,7 +157,7 @@ public final class Main extends JavaPlugin {
         return worldBreakingManager;
     }
 
-    public static Main getInstance() {
+    public static EventHelper getInstance() {
         return instance;
     }
 
@@ -158,5 +167,9 @@ public final class Main extends JavaPlugin {
 
     public void toggleChatEnabled() {
         this.chatEnabled = !chatEnabled;
+    }
+
+    public TestManager getTestManager() {
+        return testManager;
     }
 }

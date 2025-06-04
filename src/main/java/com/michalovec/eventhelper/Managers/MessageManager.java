@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Managers;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -11,10 +11,10 @@ public class MessageManager {
     private static YamlConfiguration config;
 
     public static void setup() {
-        file = new File(Main.getInstance().getDataFolder(), "messages.yml");
+        file = new File(EventHelper.getInstance().getDataFolder(), "messages.yml");
 
         if (!file.exists()) {
-            Main.getInstance().saveResource("messages.yml", false);
+            EventHelper.getInstance().saveResource("messages.yml", false);
         }
 
         config = YamlConfiguration.loadConfiguration(file);

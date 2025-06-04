@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Listeners;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -13,9 +13,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class EventSettingsGuiListener implements Listener {
 
-    private final Main plugin;
+    private final EventHelper plugin;
 
-    public EventSettingsGuiListener(Main plugin) {
+    public EventSettingsGuiListener(EventHelper plugin) {
         this.plugin = plugin;
     }
 

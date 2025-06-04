@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -35,7 +35,7 @@ public class EventHelperCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("version")) {
-            String version = Main.getInstance().getDescription().getVersion();
+            String version = EventHelper.getInstance().getDescription().getVersion();
             sender.sendMessage(MessageManager.get("messages.versionMessage").replace("%version%", version));
             return true;
         }

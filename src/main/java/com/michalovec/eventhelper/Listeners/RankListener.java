@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Listeners;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,9 +14,9 @@ import java.io.IOException;
 
 public class RankListener implements Listener {
 
-    private Main main;
+    private EventHelper main;
 
-    public RankListener(Main main){
+    public RankListener(EventHelper main){
         this.main = main;
     }
 

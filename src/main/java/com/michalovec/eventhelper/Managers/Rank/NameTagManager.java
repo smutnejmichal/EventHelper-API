@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Managers.Rank;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;
@@ -11,8 +11,8 @@ import java.util.Objects;
 
 public class NameTagManager {
 
-    private Main main;
-    public NameTagManager(Main main){
+    private EventHelper main;
+    public NameTagManager(EventHelper main){
         this.main = main;
     }
 

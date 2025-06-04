@@ -1,8 +1,7 @@
 package com.michalovec.eventhelper.Listeners;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
-import com.michalovec.eventhelper.Managers.WorldBreakingManager;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
@@ -14,9 +13,9 @@ import java.util.List;
 
 public class WorldBreakingEvent implements Listener {
 
-    private Main main;
+    private EventHelper main;
 
-    public WorldBreakingEvent(Main main){
+    public WorldBreakingEvent(EventHelper main){
         this.main = main;
     }
 

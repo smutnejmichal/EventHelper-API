@@ -1,13 +1,15 @@
 name: EventHelper
 version: '1.1'
-main: com.michalovec.eventhelper.Main
+main: com.michalovec.eventhelper.EventHelper
 api-version: '1.21'
 authors: [ Michalovec, LordKingCZ ]
-depend: [MultiWorld]
+depend: [ MultiWorld ]
+softdepend: [ "PlaceholderAPI" ]
 
 commands:
-  chat:
-    permission: eventhelper.chat
+#  chat:
+#    permission: eventhelper.chat
+  test:
   gma:
     permission: eventhelper.gma
   gmc:
@@ -58,7 +60,7 @@ permissions:
   eventhelper.*:
     description: Všechna oprávnění pro EventHelper
     children:
-      eventhelper.chat: true
+#      eventhelper.chat: true
       eventhelper.gma: true
       eventhelper.gmc: true
       eventhelper.gmsp: true
@@ -78,8 +80,8 @@ permissions:
       eventhelper.feed: true
       eventhelper.speed: true
 
-  eventhelper.chat:
-    description: Povolení pro /chat
+#  eventhelper.chat.bypass:
+#    description: Povolení psát do chatu
   eventhelper.gma:
     description: Povolení pro /gma
   eventhelper.gmc:
@@ -116,4 +118,8 @@ permissions:
     description: Povolení pro /feed
   eventhelper.speed:
     description: Povolení pro /speed
+  eventhelper.admin:
+    description: Permise pro adminy
+  eventhelper.hrac:
+    description: Permise pro hráče
 

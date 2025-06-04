@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Managers.Rank;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -14,14 +14,14 @@ import java.util.UUID;
 
 public class RankManager {
 
-    private Main main;
+    private EventHelper main;
 
     private File file;
     private YamlConfiguration config;
     private HashMap<UUID, PermissionAttachment> perms = new HashMap<>();
 
 
-    public RankManager(Main main){
+    public RankManager(EventHelper main){
         this.main = main;
 
         if (!main.getDataFolder().exists()){

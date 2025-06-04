@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Commands;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,10 +15,10 @@ import java.util.Set;
 
 public class TeamChatCommand implements CommandExecutor {
 
-    private final Main main;
+    private final EventHelper main;
     private final Set<Player> spies = new HashSet<>();
 
-    public TeamChatCommand(Main main) {
+    public TeamChatCommand(EventHelper main) {
         this.main = main;
     }
 

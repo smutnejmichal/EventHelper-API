@@ -1,7 +1,7 @@
 package com.michalovec.eventhelper.Commands.Rank;
 
 import com.michalovec.eventhelper.Enum.Rank;
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -14,9 +14,9 @@ public class RankCommand implements CommandExecutor {
 
     //     /rank <player> <rank>
 
-    private Main main;
+    private EventHelper main;
 
-    public RankCommand(Main main){
+    public RankCommand(EventHelper main){
         this.main = main;
     }
     @Override

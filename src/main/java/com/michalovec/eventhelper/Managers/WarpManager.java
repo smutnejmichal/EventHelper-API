@@ -1,6 +1,6 @@
     package com.michalovec.eventhelper.Managers;
 
-    import com.michalovec.eventhelper.Main;
+    import com.michalovec.eventhelper.EventHelper;
     import org.bukkit.Bukkit;
     import org.bukkit.Location;
     import org.bukkit.World;
@@ -15,7 +15,7 @@
 
     public class WarpManager {
 
-    private static final File warpFolder = new File(Main.getInstance().getDataFolder(), "warps");
+    private static final File warpFolder = new File(EventHelper.getInstance().getDataFolder(), "warps");
 
     public static void createWarp(String name, Location location) throws IOException {
         File warpFile = new File(warpFolder, name + ".yml");

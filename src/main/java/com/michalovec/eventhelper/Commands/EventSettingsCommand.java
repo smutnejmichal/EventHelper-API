@@ -1,6 +1,6 @@
 package com.michalovec.eventhelper.Commands;
 
-import com.michalovec.eventhelper.Main;
+import com.michalovec.eventhelper.EventHelper;
 import com.michalovec.eventhelper.Managers.MessageManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,9 +17,9 @@ import java.util.List;
 
 public class EventSettingsCommand implements CommandExecutor {
 
-    private final Main plugin;
+    private final EventHelper plugin;
 
-    public EventSettingsCommand(Main plugin) {
+    public EventSettingsCommand(EventHelper plugin) {
         this.plugin = plugin;
     }
 
