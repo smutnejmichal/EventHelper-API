@@ -1,5 +1,7 @@
 package com.michalovec.eventhelper.Core;
 
+import org.bukkit.entity.Player;
+
 import java.util.UUID;
 
 
@@ -14,7 +16,7 @@ public class TeamAPI {
         currentProvider = null;
     }
 
-    public static GameTeam getTeam(UUID playerUUID) {
-        return currentProvider != null ? currentProvider.getTeam(playerUUID) : null;
+    public static GameTeam getTeam(Player player) {
+        return currentProvider != null ? currentProvider.getTeam(player) : null;
     }
 }
