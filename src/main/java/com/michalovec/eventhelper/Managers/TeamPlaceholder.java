@@ -37,12 +37,9 @@ public class TeamPlaceholder extends PlaceholderExpansion {
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
         if (identifier.equals("team_prefix")) {
-//            if (plugin.getTestManager().isGameRunning()) {
-                GameTeam team = TeamAPI.getTeam(player);
-                if (team != null) return team.getDisplayName();
-//            } else {
-                return "%luckperms_prefix%";
-//            }
+            GameTeam team = TeamAPI.getTeam(player);
+            if (team != null) return team.getDisplayName();
+            return "%luckperms_prefix%";
         }
         return null;
     }
