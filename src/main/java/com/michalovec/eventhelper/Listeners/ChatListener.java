@@ -1,5 +1,7 @@
 package com.michalovec.eventhelper.Listeners;
 
+import com.michalovec.eventhelper.Core.GameTeam;
+import com.michalovec.eventhelper.Core.TeamAPI;
 import com.michalovec.eventhelper.EventHelper;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
@@ -21,14 +23,16 @@ public class ChatListener implements Listener {
     public void onChat (AsyncPlayerChatEvent e){
         e.setCancelled(true);
         Player player = e.getPlayer();
-        if (!plugin.isChatEnabled() && (!player.hasPermission("eventhelper.admin") || player.hasPermission("eventhelper.chat.bypass"))) {
+
+        if (!plugin.isChatEnabled() && !player.hasPermission("eventhelper.admin")) {
             player.sendMessage("§cChat je vypnutý!");
             return;
         }
 
         String prefix;
-        if (plugin.getTestManager().isGameRunning()) {
-            prefix = plugin.getRankManager().getRank(player.getUniqueId()).getDisplay();
+        GameTeam team = TeamAPI.getTeam(player);
+        if (team != null) {
+            prefix = team.getDisplayName();
         } else {
             prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%");
         }

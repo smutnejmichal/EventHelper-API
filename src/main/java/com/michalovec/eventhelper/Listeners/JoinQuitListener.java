@@ -1,7 +1,8 @@
 package com.michalovec.eventhelper.Listeners;
 
-import org.bukkit.Bukkit;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,11 +14,12 @@ public class JoinQuitListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage("§2§l+§r " + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
+        String prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%") + ChatColor.RESET + " ";
+        event.setJoinMessage("§2§l+§r " + prefix + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
 
-        player.setPlayerListHeaderFooter("\n\n\uE085\n", "\n§fPing: §x§F§F§5§4§5§40ms§f • Hráči: §x§F§F§5§4§5§4" + Bukkit.getOnlinePlayers().size() + "\n");
-
-        if (!player.isOp()) {
+        if (player.hasPermission("eventhelper.admin")) {
+            player.setGameMode(GameMode.CREATIVE);
+        } else {
             player.getInventory().clear();
         }
     }
@@ -25,9 +27,10 @@ public class JoinQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        String prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%") + ChatColor.RESET + " ";
         int left = player.getServer().getOnlinePlayers().size() - 1;
 
-        event.setQuitMessage("§4§l-§r " + player.getDisplayName() + " §7(" + left + " / " + player.getServer().getMaxPlayers() + ")");
+        event.setQuitMessage("§4§l-§r " + prefix + player.getDisplayName() + " §7(" + left + " / " + player.getServer().getMaxPlayers() + ")");
     }
 
 }
