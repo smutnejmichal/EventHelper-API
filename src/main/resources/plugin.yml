@@ -1,5 +1,5 @@
 name: EventHelper
-version: '1.1'
+version: '1.2.3'
 main: com.michalovec.eventhelper.EventHelper
 api-version: '1.21'
 authors: [ Michalovec, LordKingCZ ]
@@ -7,9 +7,6 @@ depend: [ MultiWorld ]
 softdepend: [ "PlaceholderAPI" ]
 
 commands:
-#  chat:
-#    permission: eventhelper.chat
-  test:
   gma:
     permission: eventhelper.gma
   gmc:
@@ -26,8 +23,6 @@ commands:
   eventhelper:
     aliases: [ eh ]
     permission: eventhelper.eventhelper
-  rank:
-    permission: eventhelper.rank
   updateranks:
     permission: eventhelper.updateranks
   createwarp:
@@ -60,7 +55,6 @@ permissions:
   eventhelper.*:
     description: Všechna oprávnění pro EventHelper
     children:
-#      eventhelper.chat: true
       eventhelper.gma: true
       eventhelper.gmc: true
       eventhelper.gmsp: true
@@ -68,7 +62,6 @@ permissions:
       eventhelper.tpall: true
       eventhelper.tphere: true
       eventhelper.eventhelper: true
-      eventhelper.rank: true
       eventhelper.updateranks: true
       eventhelper.createwarp: true
       eventhelper.removewarp: true
@@ -80,43 +73,56 @@ permissions:
       eventhelper.feed: true
       eventhelper.speed: true
 
-#  eventhelper.chat.bypass:
-#    description: Povolení psát do chatu
   eventhelper.gma:
+    default: op
     description: Povolení pro /gma
   eventhelper.gmc:
+    default: op
     description: Povolení pro /gmc
   eventhelper.gmsp:
+    default: op
     description: Povolení pro /gmsp
   eventhelper.gms:
+    default: op
     description: Povolení pro /gms
   eventhelper.tpall:
+    default: op
     description: Povolení pro /tpall
   eventhelper.tphere:
+    default: op
     description: Povolení pro /tphere
   eventhelper.eventhelper:
+    default: op
     description: Povolení pro /eventhelper nebo /eh
-  eventhelper.rank:
-    description: Povolení pro /rank
   eventhelper.updateranks:
+    default: op
     description: Povolení pro /updateranks
   eventhelper.createwarp:
+    default: op
     description: Povolení pro /createwarp
   eventhelper.removewarp:
+    default: op
     description: Povolení pro /removewarp
   eventhelper.warp:
+    default: op
     description: Povolení pro /warp
   eventhelper.list:
+    default: op
     description: Povolení pro /list
   eventhelper.eventsettings:
+    default: op
     description: Povolení pro /eventsettings nebo /es
   eventhelper.worldgriefing:
+    default: op
     description: Povolení pro /worldgriefing nebo /wg
   eventhelper.heal:
+    default: op
     description: Povolení pro /heal
   eventhelper.feed:
+    default: op
     description: Povolení pro /feed
   eventhelper.speed:
+    default: op
     description: Povolení pro /speed
   eventhelper.admin:
     description: Permise pro adminy
