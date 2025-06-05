@@ -1,6 +1,5 @@
 package com.michalovec.eventhelper.Listeners;
 
-import com.michalovec.eventhelper.Enum.Rank;
 import com.michalovec.eventhelper.EventHelper;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -19,14 +18,13 @@ public class WorldBreakingEvent implements Listener {
         this.main = main;
     }
 
-
     @EventHandler
     public void onBreaking(BlockBreakEvent e){
 
         HashMap<World, Boolean> manager = main.getWorldBreakingManager().getWorldAllowedBreaking();
         HashMap<World, List<String>> materials = main.getWorldBreakingManager().getBypassBreaking();
 
-        if (main.getRankManager().getRank(e.getPlayer().getUniqueId()) == Rank.ADMIN) return;
+        if (e.getPlayer().hasPermission("eventhelper.admin")) return;
 
         if (!manager.containsKey(e.getBlock().getWorld())){
             manager.put(e.getBlock().getWorld(), true);
