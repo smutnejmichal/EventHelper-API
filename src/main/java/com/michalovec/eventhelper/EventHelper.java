@@ -13,12 +13,8 @@ import com.michalovec.eventhelper.Commands.GameMode.GmSurvivalCommand;
 import com.michalovec.eventhelper.Commands.Warp.CreateWarpCommand;
 import com.michalovec.eventhelper.Commands.Warp.RemoveWarpCommand;
 import com.michalovec.eventhelper.Commands.Warp.WarpCommand;
-import com.michalovec.eventhelper.Commands.Rank.RankCommand;
-import com.michalovec.eventhelper.Commands.Rank.UpdateCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpAllCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpHereCommand;
-import com.michalovec.eventhelper.Managers.Rank.NameTagManager;
-import com.michalovec.eventhelper.Managers.Rank.RankManager;
 import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingBlocksTabCompleter;
 import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingByPassTabCompleter;
 import org.bukkit.Bukkit;
@@ -31,10 +27,7 @@ public final class EventHelper extends JavaPlugin {
     private static EventHelper instance;
 
     private boolean chatEnabled = true;
-    private NameTagManager nameTagManager;
-    private RankManager rankManager;
     private WorldBreakingManager worldBreakingManager;
-    private TestManager testManager;
 
     @Override
     public void onEnable() {
@@ -49,14 +42,11 @@ public final class EventHelper extends JavaPlugin {
         System.out.println();
         instance = this;
 
-        nameTagManager = new NameTagManager(this);
-        rankManager = new RankManager(this);
         worldBreakingManager = new WorldBreakingManager(this);
-
-//        new TabUpdater(this).start();
 
         // COMMANDS
         // WARP
+        getLogger().info("Registering commands...");
         getCommand("createwarp").setExecutor(new CreateWarpCommand());
         getCommand("removewarp").setExecutor(new RemoveWarpCommand());
         getCommand("removewarp").setTabCompleter(new WarpTabCompleter());
@@ -65,11 +55,6 @@ public final class EventHelper extends JavaPlugin {
 
         // GUI
         getCommand("eventsettings").setExecutor(new EventSettingsCommand(this));
-
-        // RANK
-        getCommand("rank").setExecutor(new RankCommand(this));
-        getCommand("rank").setTabCompleter(new RankTabCompleter());
-        getCommand("updateranks").setExecutor(new UpdateCommand(this));
 
         // EVENTHELPER
         getCommand("eventhelper").setExecutor(new EventHelperCommand());
@@ -107,10 +92,12 @@ public final class EventHelper extends JavaPlugin {
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("feed").setTabCompleter(new PlayerCompleter());
 
-        getLogger().info("Registering placeholder...");
-        testManager = new TestManager();
-        getCommand("test").setExecutor(new TestCommand(this));
+        // SPEED
+        getCommand("speed").setExecutor(new SpeedCommand());
+        getCommand("feed").setTabCompleter(new SpeedTabCompleter());
 
+        // PLACEHOLDER
+        getLogger().info("Registering placeholder...");
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
             new TeamPlaceholder(this).register(); //
         } else {
@@ -118,18 +105,17 @@ public final class EventHelper extends JavaPlugin {
         }
 
         // LISTENERS
-        // RANK
-        Bukkit.getPluginManager().registerEvents(new RankListener(this), this);
+        getLogger().info("Registering all listeners...");
         Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
 
         // GUI
         Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
 
-        //World Block Breaking
+        // World Block Breaking
         Bukkit.getPluginManager().registerEvents(new WorldBreakingEvent(this), this);
 
-        //World Block Breaking Loading
+        // World Block Breaking Loading
         getLogger().info("Loading breaking permissions for each world...");
         worldBreakingManager.loadWorldsBreaking();
 
@@ -138,19 +124,13 @@ public final class EventHelper extends JavaPlugin {
         File warpFolder = new File(getDataFolder(), "warps");
         if (!warpFolder.exists()) warpFolder.mkdirs();
 
+        getLogger().info("Loading messages file...");
         MessageManager.setup();
-
     }
 
     @Override
-    public void onDisable() {}
-
-    public NameTagManager getNametagManager() {
-        return nameTagManager;
-    }
-
-    public RankManager getRankManager() {
-        return rankManager;
+    public void onDisable() {
+        getLogger().info("Good Bye! \\o");
     }
 
     public WorldBreakingManager getWorldBreakingManager() {
@@ -169,7 +149,4 @@ public final class EventHelper extends JavaPlugin {
         this.chatEnabled = !chatEnabled;
     }
 
-    public TestManager getTestManager() {
-        return testManager;
-    }
 }

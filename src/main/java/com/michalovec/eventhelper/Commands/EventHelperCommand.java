@@ -17,7 +17,6 @@ public class EventHelperCommand implements CommandExecutor {
             sender.sendMessage("§c/eventhelper version §7- Zobrazí verzi pluginu");
             sender.sendMessage("§c/eventhelper help §7- Zobrazí tuto nápovědu");
             sender.sendMessage("§c/eventsettings §7- Otevře GUI pro částečné nastavení eventu");
-            sender.sendMessage("§c/rank <hráč> <rank> §7- Nastaví danému hráčovi rank");
             sender.sendMessage("§c/tphere <hráč> §7- Teleportuje hráče na vaší lokaci");
             sender.sendMessage("§c/tpall §7- Teleportuje veškeré hráče na vaší lokaci");
             sender.sendMessage("§c/createwarp §7- Vytvoří warp");
