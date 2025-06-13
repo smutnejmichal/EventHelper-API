@@ -79,9 +79,6 @@ public final class EventHelper extends JavaPlugin {
         // PLAYER LIST
         getCommand("list").setExecutor(new ListCommand());
 
-        // TEAM CHAT + SPY
-//        getCommand("chat").setExecutor(new TeamChatCommand(this));
-
         // World Block Breaking
         getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
         getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
