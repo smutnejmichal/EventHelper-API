@@ -37,6 +37,11 @@ public class ChatListener implements Listener {
             prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%");
         }
 
-        Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " → " + ChatColor.WHITE + e.getMessage());
+        if (player.hasPermission("eventhelper.admin")) {
+            Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
+            return;
+        }
+
+        Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
     }
 }

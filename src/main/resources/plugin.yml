@@ -50,6 +50,7 @@ commands:
     permission: eventhelper.feed
   speed:
     permission: eventhelper.speed
+  win:
 
 permissions:
   eventhelper.*:
@@ -72,6 +73,7 @@ permissions:
       eventhelper.heal: true
       eventhelper.feed: true
       eventhelper.speed: true
+      eventhelper.addwins: true
 
   eventhelper.gma:
     default: op
@@ -124,6 +126,9 @@ permissions:
   eventhelper.speed:
     default: op
     description: Povolení pro /speed
+  eventhelper.addwins:
+    default: op
+    description: Povolení pro /win add
   eventhelper.admin:
     description: Permise pro adminy
   eventhelper.hrac:

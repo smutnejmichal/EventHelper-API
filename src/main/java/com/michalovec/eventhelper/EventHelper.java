@@ -4,6 +4,7 @@ import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingBlocksComm
 import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingByPassCmd;
 import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.*;
+import com.michalovec.eventhelper.Placeholders.Placeholder;
 import com.michalovec.eventhelper.TabCompletetion.*;
 import com.michalovec.eventhelper.Commands.*;
 import com.michalovec.eventhelper.Commands.GameMode.GmAdventureCommand;
@@ -28,6 +29,7 @@ public final class EventHelper extends JavaPlugin {
 
     private boolean chatEnabled = true;
     private WorldBreakingManager worldBreakingManager;
+    private StatsManager statsManager;
 
     @Override
     public void onEnable() {
@@ -43,6 +45,7 @@ public final class EventHelper extends JavaPlugin {
         instance = this;
 
         worldBreakingManager = new WorldBreakingManager(this);
+        statsManager = new StatsManager(this);
 
         // COMMANDS
         // WARP
@@ -71,6 +74,8 @@ public final class EventHelper extends JavaPlugin {
         getCommand("gmsp").setExecutor(new GmSpectatorCommand());
         getCommand("gms").setExecutor(new GmSurvivalCommand());
 
+        getCommand("win").setExecutor(new WinCommand(this));
+
         // PLAYER LIST
         getCommand("list").setExecutor(new ListCommand());
 
@@ -98,8 +103,8 @@ public final class EventHelper extends JavaPlugin {
 
         // PLACEHOLDER
         getLogger().info("Registering placeholder...");
-        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) { //
-            new TeamPlaceholder(this).register(); //
+        if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new Placeholder(this).register();
         } else {
             getLogger().warning("PlayerholderAPI nebylo nalezeno, placeholder nebude fungovat!");
         }
@@ -135,6 +140,10 @@ public final class EventHelper extends JavaPlugin {
 
     public WorldBreakingManager getWorldBreakingManager() {
         return worldBreakingManager;
+    }
+
+    public StatsManager getStatsManager() {
+        return statsManager;
     }
 
     public static EventHelper getInstance() {

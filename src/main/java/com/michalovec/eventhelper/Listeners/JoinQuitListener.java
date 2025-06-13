@@ -21,6 +21,8 @@ public class JoinQuitListener implements Listener {
             player.setGameMode(GameMode.CREATIVE);
         } else {
             player.getInventory().clear();
+            player.setExp(0.0f);
+            player.setLevel(0);
         }
     }
 
