@@ -28,6 +28,7 @@ public final class EventHelper extends JavaPlugin {
     private static EventHelper instance;
 
     private boolean chatEnabled = true;
+    private boolean isAnyGameRunning = false;
     private WorldBreakingManager worldBreakingManager;
     private StatsManager statsManager;
 
@@ -108,7 +109,7 @@ public final class EventHelper extends JavaPlugin {
 
         // LISTENERS
         getLogger().info("Registering all listeners...");
-        Bukkit.getPluginManager().registerEvents(new JoinQuitListener(), this);
+        Bukkit.getPluginManager().registerEvents(new JoinQuitListener(this), this);
         Bukkit.getPluginManager().registerEvents(new ChatListener(this), this);
 
         // GUI
@@ -155,4 +156,11 @@ public final class EventHelper extends JavaPlugin {
         this.chatEnabled = !chatEnabled;
     }
 
+    public void setGameRunning(boolean anyGameRunning) {
+        isAnyGameRunning = anyGameRunning;
+    }
+
+    public boolean isAnyGameRunning() {
+        return isAnyGameRunning;
+    }
 }
