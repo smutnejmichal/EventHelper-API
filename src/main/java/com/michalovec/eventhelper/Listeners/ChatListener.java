@@ -21,11 +21,11 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onChat (AsyncPlayerChatEvent e){
-        e.setCancelled(true);
         Player player = e.getPlayer();
 
         if (!plugin.isChatEnabled() && !player.hasPermission("eventhelper.admin")) {
             player.sendMessage("§cChat je vypnutý!");
+            e.setCancelled(true);
             return;
         }
 
@@ -38,10 +38,9 @@ public class ChatListener implements Listener {
         }
 
         if (player.hasPermission("eventhelper.admin")) {
-            Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
+            e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
             return;
         }
-
-        Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
+        e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
     }
 }
