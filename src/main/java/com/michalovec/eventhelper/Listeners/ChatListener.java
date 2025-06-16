@@ -4,7 +4,6 @@ import com.michalovec.eventhelper.Core.GameTeam;
 import com.michalovec.eventhelper.Core.TeamAPI;
 import com.michalovec.eventhelper.EventHelper;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,11 +20,11 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onChat (AsyncPlayerChatEvent e){
-        e.setCancelled(true);
         Player player = e.getPlayer();
 
         if (!plugin.isChatEnabled() && !player.hasPermission("eventhelper.admin")) {
             player.sendMessage("§cChat je vypnutý!");
+            e.setCancelled(true);
             return;
         }
 
@@ -38,10 +37,9 @@ public class ChatListener implements Listener {
         }
 
         if (player.hasPermission("eventhelper.admin")) {
-            Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
+            e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
             return;
         }
-
-        Bukkit.broadcastMessage(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
+        e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
     }
 }
