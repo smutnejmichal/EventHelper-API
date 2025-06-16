@@ -1,19 +1,19 @@
-    package com.michalovec.eventhelper.Managers;
+package com.michalovec.eventhelper.Managers;
 
-    import com.michalovec.eventhelper.EventHelper;
-    import org.bukkit.Bukkit;
-    import org.bukkit.Location;
-    import org.bukkit.World;
-    import org.bukkit.configuration.file.YamlConfiguration;
+import com.michalovec.eventhelper.EventHelper;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.configuration.file.YamlConfiguration;
 
-    import java.io.File;
-    import java.io.IOException;
-    import java.util.Arrays;
-    import java.util.Collections;
-    import java.util.List;
-    import java.util.stream.Collectors;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public class WarpManager {
+public class WarpManager {
 
     private static final File warpFolder = new File(EventHelper.getInstance().getDataFolder(), "warps");
 

@@ -4,7 +4,6 @@ import com.michalovec.eventhelper.Core.GameTeam;
 import com.michalovec.eventhelper.Core.TeamAPI;
 import com.michalovec.eventhelper.EventHelper;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import net.kyori.adventure.platform.facet.Facet;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
