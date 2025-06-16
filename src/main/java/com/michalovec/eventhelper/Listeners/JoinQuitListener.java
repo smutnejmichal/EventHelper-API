@@ -11,6 +11,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class JoinQuitListener implements Listener {
 
@@ -27,13 +29,15 @@ public class JoinQuitListener implements Listener {
         event.setJoinMessage("§2§l+§r " + prefix + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
 
         if (!plugin.isAnyGameRunning()) {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, -1,255, true, false));
+            player.teleport(new Location(Bukkit.getWorld("Spawn"),0.5f,65.5f,0.5f,125,0));
             if (player.hasPermission("eventhelper.admin")) {
                 player.setGameMode(GameMode.CREATIVE);
             } else {
+                player.setGameMode(GameMode.ADVENTURE);
                 player.getInventory().clear();
                 player.setExp(0.0f);
                 player.setLevel(0);
-                player.teleport(new Location(Bukkit.getWorld("Spawn"),0.5f,65.5f,0.5f,125,0));
             }
         }
     }
