@@ -1,7 +1,5 @@
 package com.michalovec.eventhelper;
 
-import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingBlocksCommand;
-import com.michalovec.eventhelper.Commands.WorldBreaking.WorldBreakingByPassCmd;
 import com.michalovec.eventhelper.Listeners.*;
 import com.michalovec.eventhelper.Managers.*;
 import com.michalovec.eventhelper.Placeholders.Placeholder;
@@ -16,8 +14,6 @@ import com.michalovec.eventhelper.Commands.Warp.RemoveWarpCommand;
 import com.michalovec.eventhelper.Commands.Warp.WarpCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpAllCommand;
 import com.michalovec.eventhelper.Commands.Teleport.TpHereCommand;
-import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingBlocksTabCompleter;
-import com.michalovec.eventhelper.TabCompletetion.WorldBreaking.WorldBreakingByPassTabCompleter;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -29,7 +25,6 @@ public final class EventHelper extends JavaPlugin {
 
     private boolean chatEnabled = true;
     private boolean isAnyGameRunning = false;
-    private WorldBreakingManager worldBreakingManager;
     private StatsManager statsManager;
 
     @Override
@@ -45,7 +40,6 @@ public final class EventHelper extends JavaPlugin {
         System.out.println();
         instance = this;
 
-        worldBreakingManager = new WorldBreakingManager(this);
         statsManager = new StatsManager(this);
 
         // COMMANDS
@@ -80,13 +74,6 @@ public final class EventHelper extends JavaPlugin {
         // PLAYER LIST
         getCommand("list").setExecutor(new ListCommand());
 
-        // World Block Breaking
-        getCommand("worldgriefing").setExecutor(new WorldBreakingBlocksCommand(this));
-        getCommand("worldgriefing").setTabCompleter(new WorldBreakingBlocksTabCompleter());
-
-        getCommand("worldgriefingbypass").setExecutor(new WorldBreakingByPassCmd(this));
-        getCommand("worldgriefingbypass").setTabCompleter(new WorldBreakingByPassTabCompleter());
-
         // HEAL
         getCommand("heal").setExecutor(new HealCommand());
         getCommand("heal").setTabCompleter(new PlayerCompleter());
@@ -115,13 +102,6 @@ public final class EventHelper extends JavaPlugin {
         // GUI
         Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
 
-        // World Block Breaking
-        Bukkit.getPluginManager().registerEvents(new WorldBreakingEvent(this), this);
-
-        // World Block Breaking Loading
-        getLogger().info("Loading breaking permissions for each world...");
-        worldBreakingManager.loadWorldsBreaking();
-
 
         getLogger().info("Loading warps...");
         File warpFolder = new File(getDataFolder(), "warps");
@@ -134,10 +114,6 @@ public final class EventHelper extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Good Bye! \\o");
-    }
-
-    public WorldBreakingManager getWorldBreakingManager() {
-        return worldBreakingManager;
     }
 
     public StatsManager getStatsManager() {
