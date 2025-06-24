@@ -113,7 +113,7 @@ public final class EventHelper extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        getLogger().info("Good Bye! \\o");
+        getLogger().info("Goodbye! \\o");
     }
 
     public StatsManager getStatsManager() {
