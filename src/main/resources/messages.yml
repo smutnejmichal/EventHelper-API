@@ -3,7 +3,7 @@ messages:
   # Error zprávy
   onlyPlayer: "%prefix% §cTento příkaz může použít jen hráč. §c✘"
   warpExists: "%prefix% §7Warp s názvem '§c%warp%§7' už existuje."
-  warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje."
+  warpNotFound: "%prefix% §7Warp '§c%warp%§7' neexistuje nebo svět není načtený."
   warpDeleteFail: "%prefix% §7Nepodařilo se odstranit warp '§c%warp%§7'. §c✘"
   playerNotOnline: "%prefix% §7Hráč '§c%warp%§7' není online."
   playerIsNotOP: "%prefix% §cMusíš mít OP pro použití tohoto příkazu!"

@@ -37,6 +37,12 @@ public class WarpManager {
 
         YamlConfiguration config = YamlConfiguration.loadConfiguration(warpFile);
         World world = Bukkit.getWorld(config.getString("world"));
+
+        if (world == null) {
+            Bukkit.getLogger().severe("Svět: " + world + " není načten nebo neexistuje!");
+            return null;
+        }
+
         double x = config.getDouble("x");
         double y = config.getDouble("y");
         double z = config.getDouble("z");
