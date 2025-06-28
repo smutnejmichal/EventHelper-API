@@ -39,7 +39,7 @@ public class WarpManager {
         World world = Bukkit.getWorld(config.getString("world"));
 
         if (world == null) {
-            Bukkit.getLogger().severe("Svět: " + world + " není načten nebo neexistuje!");
+            Bukkit.getLogger().warning("[EventHelper] Svět " + config.getString("world") + " není načten nebo neexistuje!");
             return null;
         }
 
