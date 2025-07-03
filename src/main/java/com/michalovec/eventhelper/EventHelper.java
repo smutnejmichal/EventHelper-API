@@ -86,6 +86,9 @@ public final class EventHelper extends JavaPlugin {
         getCommand("speed").setExecutor(new SpeedCommand());
         getCommand("feed").setTabCompleter(new SpeedTabCompleter());
 
+        // TELEPORTALLTOSPAWN
+        getCommand("tpalltospawn").setExecutor(new TeleportAllToSpawnCommand());
+
         // PLACEHOLDER
         getLogger().info("Registering placeholder...");
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
