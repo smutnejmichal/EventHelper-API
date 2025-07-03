@@ -29,7 +29,6 @@ public class JoinQuitListener implements Listener {
         event.setJoinMessage("§2§l+§r " + prefix + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
 
         if (!plugin.isAnyGameRunning()) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, -1,255, true, false));
             player.teleport(new Location(Bukkit.getWorld("Spawn"),0.5f,65.5f,0.5f,125,0));
             if (player.hasPermission("eventhelper.admin")) {
                 player.setGameMode(GameMode.CREATIVE);
