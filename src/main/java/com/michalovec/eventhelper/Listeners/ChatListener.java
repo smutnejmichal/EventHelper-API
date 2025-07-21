@@ -4,6 +4,7 @@ import com.michalovec.eventhelper.Core.GameTeam;
 import com.michalovec.eventhelper.Core.TeamAPI;
 import com.michalovec.eventhelper.EventHelper;
 import me.clip.placeholderapi.PlaceholderAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,7 +20,7 @@ public class ChatListener implements Listener {
     }
 
     @EventHandler
-    public void onChat (AsyncPlayerChatEvent e){
+    public void onChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
 
         if (!plugin.isChatEnabled() && !player.hasPermission("eventhelper.admin")) {
@@ -36,10 +37,14 @@ public class ChatListener implements Listener {
             prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%");
         }
 
+        prefix = prefix.replace("%", "%%"); // jen pro formatovací část, ne pro message
+        String name = player.getName();
+
         if (player.hasPermission("eventhelper.admin")) {
-            e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » §x§0§3§E§2§A§E" + e.getMessage());
+            e.setFormat(prefix + " §f" + name + "§8 » §x§0§3§E§2§A§E%2$s");
             return;
         }
-        e.setFormat(prefix + " " + ChatColor.WHITE + player.getName() + "§8" + " » " + ChatColor.WHITE + e.getMessage());
+
+        e.setFormat(prefix + " §f" + name + "§8 » §f%2$s");
     }
 }
