@@ -18,6 +18,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.security.spec.NamedParameterSpec;
 
 public final class EventHelper extends JavaPlugin {
 
@@ -26,9 +27,12 @@ public final class EventHelper extends JavaPlugin {
     private boolean chatEnabled = true;
     private boolean isAnyGameRunning = false;
     private StatsManager statsManager;
+    private NPCsManager npcsManager;
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+
         String RED = "\u001B[91m";
         String DARK_RED = "\u001B[31m";
         String ORANGE = "\u001B[33m";
@@ -41,6 +45,7 @@ public final class EventHelper extends JavaPlugin {
         instance = this;
 
         statsManager = new StatsManager(this);
+        npcsManager = new NPCsManager(this);
 
         // COMMANDS
         // WARP
@@ -121,6 +126,10 @@ public final class EventHelper extends JavaPlugin {
 
     public StatsManager getStatsManager() {
         return statsManager;
+    }
+
+    public NPCsManager getNpcsManager() {
+        return npcsManager;
     }
 
     public static EventHelper getInstance() {
