@@ -22,7 +22,6 @@ public class EventHelperCommand implements CommandExecutor {
             sender.sendMessage("§c/createwarp §7- Vytvoří warp");
             sender.sendMessage("§c/removewarp §7- Odstraní warp");
             sender.sendMessage("§c/warp <warp> §7- Teleporujte vás na daný warp");
-            sender.sendMessage("§c/chat <zpráva | spy> §7- Odešle týmovou zprávu nebo nastaví spy mód");
             sender.sendMessage(" ");
             return true;
         }
