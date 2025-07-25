@@ -54,6 +54,12 @@ public class NPCsManager {
         Bukkit.broadcastMessage("\n§x§C§8§8§5§0§A§lHráč " + target.getName() + " je na 3. místě!\n");
     }
 
+    public void removeAllNPCs() {
+        for (Npc npc : FancyNpcsPlugin.get().getNpcManager().getAllNpcs()) {
+            FancyNpcsPlugin.get().getNpcManager().removeNpc(npc);
+        }
+    }
+
     private Location getLocationByPath(String path) {
         FileConfiguration config = plugin.getConfig();
 
