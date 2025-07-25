@@ -5,9 +5,14 @@ import de.oliver.fancynpcs.api.FancyNpcsPlugin;
 import de.oliver.fancynpcs.api.Npc;
 import de.oliver.fancynpcs.api.NpcData;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.UUID;
 
@@ -59,6 +64,37 @@ public class NPCsManager {
                 config.getInt("winners-locations." + path + ".yaw"),
                 config.getInt("winners-locations." + path + ".pitch")
         );
+    }
+
+    public void spawnFireworksOnWinner(Player winner, int seconds) {
+        new BukkitRunnable() {
+            int timeLeft = seconds;
+
+            @Override
+            public void run() {
+
+                Location loc = winner.getLocation();
+                Firework firework = winner.getWorld().spawn(loc, Firework.class);
+                FireworkMeta meta = (FireworkMeta) firework.getFireworkMeta();
+                meta.addEffect(FireworkEffect.builder()
+                        .withColor(Color.YELLOW)
+                        .withFade(Color.WHITE)
+                        .with(FireworkEffect.Type.BALL_LARGE)
+                        .flicker(true)
+                        .trail(true)
+                        .build());
+
+                meta.setPower(1);
+                firework.setFireworkMeta(meta);
+
+                if (timeLeft <= 0) {
+                    this.cancel();
+                    return;
+                }
+
+                timeLeft--;
+            }
+        }.runTaskTimer(plugin, 0L, 20L);
     }
 
 }
