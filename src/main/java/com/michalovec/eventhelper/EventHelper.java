@@ -18,7 +18,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.security.spec.NamedParameterSpec;
 
 public final class EventHelper extends JavaPlugin {
 
@@ -109,6 +108,9 @@ public final class EventHelper extends JavaPlugin {
 
         // GUI
         Bukkit.getPluginManager().registerEvents(new EventSettingsGuiListener(this),this);
+
+        // FIREWORK
+        Bukkit.getPluginManager().registerEvents(new FireworkDamageListener(),this);
 
 
         getLogger().info("Loading warps...");

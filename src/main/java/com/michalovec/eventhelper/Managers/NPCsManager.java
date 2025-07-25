@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.UUID;
@@ -86,6 +87,7 @@ public class NPCsManager {
 
                 meta.setPower(1);
                 firework.setFireworkMeta(meta);
+                firework.setMetadata("noDamage", new FixedMetadataValue(plugin, true));
 
                 if (timeLeft <= 0) {
                     this.cancel();
