@@ -79,6 +79,10 @@ public class NPCsManager {
 
             @Override
             public void run() {
+                if (winner == null || !winner.isOnline()) {
+                    this.cancel();
+                    return;
+                }
 
                 Location loc = winner.getLocation();
                 Firework firework = winner.getWorld().spawn(loc, Firework.class);
@@ -97,9 +101,7 @@ public class NPCsManager {
 
                 if (timeLeft <= 0) {
                     this.cancel();
-                    return;
                 }
-
                 timeLeft--;
             }
         }.runTaskTimer(plugin, 0L, 20L);
