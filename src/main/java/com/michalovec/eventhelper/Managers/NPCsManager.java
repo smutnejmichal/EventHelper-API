@@ -53,7 +53,7 @@ public class NPCsManager {
         Bukkit.broadcastMessage("\n§x§C§8§8§5§0§A§lHráč " + target.getName() + " je na 3. místě!\n");
     }
 
-    public Location getLocationByPath(String path) {
+    private Location getLocationByPath(String path) {
         FileConfiguration config = plugin.getConfig();
 
         return new Location(
