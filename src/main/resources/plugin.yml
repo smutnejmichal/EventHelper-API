@@ -3,7 +3,7 @@ version: '1.2.4'
 main: com.michalovec.eventhelper.EventHelper
 api-version: '1.21'
 authors: [ Michalovec, LordKingCZ ]
-depend: [ MultiWorld ]
+depend: [ FancyNpcs, MultiWorld ]
 softdepend: [ "PlaceholderAPI" ]
 
 commands:
