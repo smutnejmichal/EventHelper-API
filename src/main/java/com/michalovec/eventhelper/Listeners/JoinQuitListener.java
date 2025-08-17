@@ -25,7 +25,7 @@ public class JoinQuitListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         String prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%") + ChatColor.RESET + " ";
-        event.setJoinMessage("§2§l+§r " + prefix + player.getDisplayName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
+        event.setJoinMessage("§2§l+§r " + prefix + player.getName() + " §7(" + player.getServer().getOnlinePlayers().size() + " / " + player.getServer().getMaxPlayers() + ")");
 
         if (!plugin.isAnyGameRunning()) {
             player.teleport(new Location(Bukkit.getWorld("Spawn"),0.5f,65.5f,0.5f,125,0));
@@ -54,7 +54,7 @@ public class JoinQuitListener implements Listener {
         String prefix = PlaceholderAPI.setPlaceholders(player, "%luckperms_prefix%") + ChatColor.RESET + " ";
         int left = player.getServer().getOnlinePlayers().size() - 1;
 
-        event.setQuitMessage("§4§l-§r " + prefix + player.getDisplayName() + " §7(" + left + " / " + player.getServer().getMaxPlayers() + ")");
+        event.setQuitMessage("§4§l-§r " + prefix + player.getName() + " §7(" + left + " / " + player.getServer().getMaxPlayers() + ")");
     }
 
 }
