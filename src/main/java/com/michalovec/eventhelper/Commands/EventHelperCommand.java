@@ -11,19 +11,19 @@ public class EventHelperCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
         if (args.length == 0 || args[0].equalsIgnoreCase("help")) {
-            sender.sendMessage(" ");
-            sender.sendMessage("§8§m------§r §4EventHelper Help §8§m------");
-            sender.sendMessage("§c/eventhelper reload §7- Znovu načte konfiguraci");
-            sender.sendMessage("§c/eventhelper version §7- Zobrazí verzi pluginu");
-            sender.sendMessage("§c/eventhelper help §7- Zobrazí tuto nápovědu");
-            sender.sendMessage("§c/eventsettings §7- Otevře GUI pro částečné nastavení eventu");
-            sender.sendMessage("§c/tphere <hráč> §7- Teleportuje hráče na vaší lokaci");
-            sender.sendMessage("§c/tpall §7- Teleportuje veškeré hráče na vaší lokaci");
-            sender.sendMessage("§c/createwarp §7- Vytvoří warp");
-            sender.sendMessage("§c/removewarp §7- Odstraní warp");
-            sender.sendMessage("§c/warp <warp> §7- Teleporujte vás na daný warp");
-            sender.sendMessage(" ");
-            return true;
+            sender.sendMessage(""" 
+                    §8§m        §r §4EventHelper Help §8§m        §r
+                    §c/eventhelper reload §7- Znovu načte konfiguraci
+                    §c/eventhelper version §7- Zobrazí verzi pluginu
+                    §c/eventhelper help §7- Zobrazí tuto nápovědu
+                    §c/eventsettings §7- Otevře GUI pro částečné nastavení eventu
+                    §c/tphere <hráč> §7- Teleportuje hráče na vaší lokaci
+                    §c/tpall §7- Teleportuje veškeré hráče na vaší lokaci
+                    §c/createwarp §7- Vytvoří warp
+                    §c/removewarp §7- Odstraní  warp
+                    §c/warp <warp> §7- Teleporujte vás na daný warp
+                    """);
+            return false;
         }
 
         if (args[0].equalsIgnoreCase("reload")) {
