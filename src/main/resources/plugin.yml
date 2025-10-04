@@ -45,6 +45,8 @@ commands:
   win:
   tpalltospawn:
     permission: eventhelper.tpalltospawn
+  hat:
+    permission: eventhelper.hat
 
 permissions:
   eventhelper.*:
@@ -68,6 +70,7 @@ permissions:
       eventhelper.speed: true
       eventhelper.addwins: true
       eventhelper.tpalltospawn: true
+      eventhelper.hat: true
 
   eventhelper.gma:
     default: op
@@ -123,6 +126,9 @@ permissions:
   eventhelper.tpalltospawn:
     default: op
     description: Povolení pro /tpalltospawn
+  eventhelper.hat:
+    default: op
+    description: Povolení pro /hat
   eventhelper.admin:
     description: Permise pro adminy
   eventhelper.hrac:

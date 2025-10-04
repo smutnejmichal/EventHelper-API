@@ -93,10 +93,14 @@ public final class EventHelper extends JavaPlugin {
         // TELEPORTALLTOSPAWN
         getCommand("tpalltospawn").setExecutor(new TeleportAllToSpawnCommand());
 
+        // HAT
+        getCommand("hat").setExecutor(new HatCommand());
+
         // PLACEHOLDER
         getLogger().info("Registering placeholder...");
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
             new Placeholder(this).register();
+            getLogger().info("Placeholder byl nalezen! Registruji...");
         } else {
             getLogger().warning("PlayerholderAPI nebylo nalezeno, placeholder nebude fungovat!");
         }

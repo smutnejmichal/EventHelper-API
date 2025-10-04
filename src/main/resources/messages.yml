@@ -48,3 +48,7 @@ messages:
   speedWrongUsage: "%prefix% §cPoužití: /speed <rychlost>."
   speedNumberMustBeInt: "%prefix% §cHodnota musí být celé číslo."
   speedChanged: "%prefix% §7Tvá rychlost byla nastavena na §c%warp%§7."
+
+  # Hat
+  hatNotAnItem: "%prefix% §cPředmět, který si chceš nasadit na hlavu nesmí být vzduch."
+  hatSuccess: "%prefix% §7Předmět byl úspěšne nasazen na hlavu."
