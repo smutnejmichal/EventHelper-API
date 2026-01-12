@@ -47,6 +47,12 @@ public class Placeholder extends PlaceholderExpansion {
             return "%luckperms_prefix%";
         }
 
+        if (identifier.equals("team_prefix_raw")) {
+            GameTeam team = TeamAPI.getTeam(player);
+            if (team != null) return team.getName();
+            return "%luckperms_prefix%";
+        }
+
         if (identifier.equals("rank")) {
             int rank = plugin.getStatsManager().getWins(player.getName());
             return String.valueOf(rank);
